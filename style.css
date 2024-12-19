@@ -24,6 +24,12 @@ body {
     /* making the body as big as the browser window for now */
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 header {
     position: sticky;
     /* will make the header stick to the screen all the time for now  */
@@ -31,4 +37,3 @@ header {
     z-index: 100;
     animation: fadeUp 0.5s ease-out;
 }
-
