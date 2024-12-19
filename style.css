@@ -1,0 +1,14 @@
+/* this will be the css file for the index.html filr */
+
+/* learning how to create css variables that i can reuse using the (var) keyword */
+
+ /* variables for color palette */
+ :root {
+    --primary: #512BD4;
+    --secondary: #00A4EF;
+    --accent: #7FBA00;
+    --dark: #13111C;
+    --light: #F5F5F5;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+}
