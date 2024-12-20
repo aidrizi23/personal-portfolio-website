@@ -198,5 +198,44 @@ nav {
 }
 
 
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.project-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-img {
+    width: 100%;
+    border-radius: 20px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 3px solid var(--border);
+    border-radius: 20px;
+    transition: 0.4s ease-in-out;
+}
+
+.code-block {
+    background: rgba(19, 17, 28, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary);
+    font-family: monospace;
+    overflow-x: auto;
+    margin: 15px 0;
+}
 
 
