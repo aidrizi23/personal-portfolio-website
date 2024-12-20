@@ -92,13 +92,14 @@ nav {
 .home {
     
     text-align: center;
-    border: var(--border) 1px solid;
+    border: var(--border) 3px solid;
     padding: 70px 20px;
     margin: 40px 0;
-    border-radius: 20px;
+    border-radius: 30px;
     background: var(--glass);
     backdrop-filter: blur(7px);
     color: var(--light);
+    
 
 }
 
@@ -106,11 +107,65 @@ nav {
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 2px var(--dark);
     color: var(--primary);
 }
 
+.home p{
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--secondary);
+    text-shadow: 2px 2px 2px var(--dark);
+}
+
+.home a {
+    display: inline-block;
+    /* needed to keep give the element the flexibility to modify it ourselves */
+    text-decoration: none;
+    color: var(--light);
+    border: var(--border) 3px solid;
+    border-radius: 20px;
+    background: var(--glass);
+    padding: 10px 20px;
+    margin-bottom: 0;
+    
+
+}
+
+.home a:hover {
+    background: var(--primary);
+    color: var(--light);
+    transform: translateY(-2px);
+    box-shadow: inset 0 0 10px var(--dark);
+    
+}
 
 
+.about {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    padding: 30px 20px;
+    background: var(--glass);
+    border: 3px solid var(--border);
+    border-radius: 30px;
+    margin-bottom: 40px;
+}
+
+.profile-img {
+    width: 100%;
+    border-radius: 20px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 3px solid var(--border);
+    border-radius: 20px;
+    transition: 0.4s ease-in-out;
+}
+
+.profile-img:hover {
+    /* transform: rotate(360deg); */
+    transform: scale(1.1);
+}
 
 
 
