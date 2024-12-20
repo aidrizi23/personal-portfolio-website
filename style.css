@@ -37,3 +37,18 @@ header {
     z-index: 100;
     animation: fadeUp 0.5s ease-out;
 }
+
+nav {
+    background: var(--glass);
+    backdrop-filter: blur(7px);
+    /* fixing the elements that will be behind the navbar so that they get blurred to */
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+  
+    display: flex; 
+    /* making it a flex to display all the elements in a row */
+    justify-content: space-between;
+    /* separating the <a> with the name and the nav links so that each one is in it's own corner  */
+    /* align-items: center; */
+}
