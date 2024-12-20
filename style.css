@@ -52,3 +52,39 @@ nav {
     /* separating the <a> with the name and the nav links so that each one is in it's own corner  */
     /* align-items: center; */
 }
+
+.logo-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--light);
+    text-decoration: none;
+}
+
+.nav-links{
+    display: flex;
+    gap: 20px;
+
+    
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--light);
+    padding : 7px 19px;
+    border: var(--border) 1px solid;
+    border-radius: 20px;
+    background: var(--glass);
+
+    transition: 0.4s ease-in-out;
+}
+
+.nav-links a:hover {
+
+    background: var(--primary);
+    color: var(--light);
+    transform: translateY(-2px);
+    /* this will move the button 2 pixels up  */
+}
+
+
+
