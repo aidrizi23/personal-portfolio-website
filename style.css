@@ -161,67 +161,6 @@ nav {
     margin-right: 30px;
 }
 
-.terminal {
-    flex: 1;
-    background: var(--dark);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
-    font-family: 'Courier New', monospace;
-}
-
-.terminal-header {
-    background: var(--glass);
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.terminal-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.terminal-button {
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-}
-
-.close { background-color: #ff5f56; }
-.minimize { background-color: #ffbd2e; }
-.maximize { background-color: #27c93f; }
-
-.terminal-title {
-    color: var(--light);
-    font-size: 14px;
-}
-
-.terminal-body {
-    padding: 20px;
-    height: 350px;
-}
-
-.terminal-line {
-    margin-bottom: 10px;
-}
-
-.terminal-prompt {
-    color: var(--accent);
-    margin-right: 10px;
-}
-
-.terminal-text {
-    color: var(--light);
-}
-
-.terminal-cursor {
-    display: inline-block;
-    width: 10px;
-    height: 20px;
-    background-color: var(--light);
-}
 
 
 
@@ -392,6 +331,80 @@ nav {
     color: var(--light);
     transform: translateY(-2px);
     box-shadow: inset 0 0 7px var(--dark);
+}
+
+
+.terminal {
+    flex: 1;
+    background: var(--dark);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    font-family: 'Courier New', monospace;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.terminal-header {
+    background: var(--glass);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.close { background-color: #ff5f56; }
+.minimize { background-color: #ffbd2e; }
+.maximize { background-color: #27c93f; }
+
+.terminal-title {
+    color: var(--light);
+    font-size: 14px;
+}
+
+.terminal-body {
+    padding: 20px;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.terminal-line {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.terminal-prompt {
+    color: var(--accent);
+    margin-right: 10px;
+}
+
+.terminal-text {
+    color: var(--light);
+    word-break: break-word;
+}
+
+.terminal-input {
+    background: none;
+    border: none;
+    color: var(--light);
+    font-family: 'Courier New', monospace;
+    font-size: inherit;
+    flex-grow: 1;
+}
+
+.terminal-input:focus {
+    outline: none;
 }
 
 
