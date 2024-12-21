@@ -31,7 +31,7 @@ function addNewLine() {
 // Function to handle terminal input
 function processInput(input) {
     if (input === 'help')
-        return 'Available commands: help, clear, about, quote';
+        return 'Available commands: help, clear, about, quote, whoami, skills, echo <text>, rev <text>';
     if (input === 'clear') {
         terminal.innerHTML = ''; 
         return ''; 
@@ -51,6 +51,10 @@ function processInput(input) {
     if (input.startsWith('echo ')) {
         return input.substring(5);
     }
+   
+    if (input.startsWith('rev ')) {
+        return reverseString(input.substring(4));
+    }
 
     return `Command not found: ${input || ''}`;
 }
@@ -68,6 +72,15 @@ function addOutput(output) {
     addNewLine(); // Add a new input line
 }
 
+
+// function to reverse characters in a string 
+function reverseString(str) {
+    let reversed = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+    return reversed;
+}
 
 
 
