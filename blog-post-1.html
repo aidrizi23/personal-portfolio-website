@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservices vs Monolithic Architecture - Albi Idrizi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog-style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="index.html" class="logo-name">Albi Idrizi</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="blog-grid.html">Blog</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <article class="blog-post">
+                <h1>Microservices vs Monolithic Architecture</h1>
+                <img src="/placeholder.svg?height=400&width=800" alt="Microservices vs Monolithic Architecture">
+                <div class="blog-content">
+                    <p>In the world of software architecture, two dominant approaches have emerged: microservices and monolithic architectures. Each has its own set of advantages and challenges, and choosing between them can significantly impact the development, deployment, and scalability of your application.</p>
+                    
+                    <h2>Monolithic Architecture</h2>
+                    <p>A monolithic architecture is the traditional unified model for designing software applications. In this approach, all components of the application are interconnected and interdependent, typically running as a single service.</p>
+                    
+                    <h3>Advantages of Monolithic Architecture:</h3>
+                    <ul>
+                        <li>Simpler development process for small teams and applications</li>
+                        <li>Easier debugging and testing</li>
+                        <li>Simpler deployment</li>
+                    </ul>
+                    
+                    <h3>Challenges of Monolithic Architecture:</h3>
+                    <ul>
+                        <li>Can become complex and difficult to maintain as the application grows</li>
+                        <li>Scaling can be challenging</li>
+                        <li>Technology stack is shared across the entire application</li>
+                    </ul>
+                    
+                    <h2>Microservices Architecture</h2>
+                    <p>Microservices architecture is an approach where an application is built as a collection of small, independent services. Each service runs in its own process and communicates with other services through well-defined APIs.</p>
+                    
+                    <h3>Advantages of Microservices Architecture:</h3>
+                    <ul>
+                        <li>Improved scalability</li>
+                        <li>Greater flexibility in choosing technologies</li>
+                        <li>Easier to understand and maintain individual services</li>
+                        <li>Can be developed and deployed independently</li>
+                    </ul>
+                    
+                    <h3>Challenges of Microservices Architecture:</h3>
+                    <ul>
+                        <li>Increased complexity in service communication and management</li>
+                        <li>Requires a mature DevOps culture</li>
+                        <li>Debugging can be more challenging</li>
+                    </ul>
+                    
+                    <h2>Conclusion</h2>
+                    <p>Choosing between microservices and monolithic architecture depends on various factors, including the size of your application, team structure, scalability requirements, and long-term goals. While microservices offer greater flexibility and scalability, they also introduce complexity that may not be necessary for smaller applications. On the other hand, monolithic architectures can be simpler to develop initially but may become challenging to maintain and scale as the application grows.</p>
+                    
+                    <p>As a .NET backend developer, it's crucial to understand both approaches and make informed decisions based on the specific needs of each project. In many cases, a hybrid approach or gradual migration from monolithic to microservices architecture might be the most practical solution.</p>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 .NET Backend Developer | Albi Idrizi</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
