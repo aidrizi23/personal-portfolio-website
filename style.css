@@ -408,3 +408,24 @@ nav {
 }
 
 
+
+
+.btn-github {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--light);
+    border: var(--border) 3px solid;
+    border-radius: 20px;
+    background: var(--glass);
+    padding: 10px 20px;
+    margin-top: 15px;
+    transition: 0.4s ease-in-out;
+}
+
+.btn-github:hover {
+    background: var(--primary);
+    color: var(--light);
+    transform: translateY(-2px);
+    box-shadow: inset 0 0 10px var(--dark);
+}
+/* adding style for the github buttons of each project */
