@@ -61,6 +61,11 @@ function processInput(input) {
         newWindow.close();
         return 'Goodbye!';
     }
+
+    if(input === 'refresh') {
+        location.reload();
+        return '';
+    }
     return `Command not found: ${input || ''}`;
 }
 
