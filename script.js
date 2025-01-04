@@ -56,12 +56,11 @@ function processInput(input) {
         return reverseString(input.substring(4));
     }
 
-    if (input === 'poweroff')
-        {
-        window.close();
+    if (input === 'poweroff') {
+        const newWindow = window.open('', '_self');
+        newWindow.close();
         return 'Goodbye!';
-        }
-
+    }
     return `Command not found: ${input || ''}`;
 }
 
