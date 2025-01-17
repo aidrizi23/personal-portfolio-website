@@ -137,7 +137,7 @@
 
         <section class="contact" id="contact">
             <h2>Get in Touch</h2>
-            <form class="contact-form">
+            <form id="contact-form" class="contact-form" onsubmit="event.preventDefault(); sendEmail();">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -153,12 +153,46 @@
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </section>
-
+        
+    
         <footer>
             <p>&copy; 2024 .NET Backend Developer | Albi Idrizi</p>
         </footer>
     </div>
 
     <script src="script.js"></script>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+    <script>
+        (function() {
+            emailjs.init("hlf4vibdNVOLMu0OP"); // Your EmailJS user ID
+        })();
+    
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value + "\n\n" + email;
+    
+            const params = {
+                from_name: name,
+                from_email: "albiidrizi27@gmail.com",
+                message: message,
+            };
+    
+            emailjs.send('service_y6kwytg', 'template_5pv3bpc', params)
+                .then(function(response) {
+                    console.log('SUCCESS!', response);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+
+            // now just clear the form
+            document.getElementById('contact-form').reset();
+
+        }
+    </script>
+    
 </body>
 </html>
