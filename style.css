@@ -211,7 +211,7 @@ nav {
 }
 
 .tech-badge{
-   padding: 10px 20px;
+    padding: 10px 20px;
     border: 3px solid var(--border);
     border-radius: 10px;
     background: var(--glass);
@@ -260,8 +260,9 @@ nav {
     padding: 15px;
     border-radius: 8px;
     border-left: 4px solid var(--secondary);
+    /* border-right: #00A4EF 4px solid; */
     font-family: monospace;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     margin: 15px 0;
 }
 
@@ -338,7 +339,7 @@ nav {
     flex: 1;
     background: var(--dark);
     border-radius: 15px;
-    overflow: hidden;
+    /* overflow: hidden; */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     font-family: 'Courier New', monospace;
     max-width: 600px;
@@ -367,6 +368,7 @@ nav {
 .close { background-color: #ff5f56; }
 .minimize { background-color: #ffbd2e; }
 .maximize { background-color: #27c93f; }
+/* adding color to the terminal buttons */
 
 .terminal-title {
     color: var(--light);
@@ -377,6 +379,7 @@ nav {
     padding: 20px;
     height: 350px;
     overflow-y: auto;
+    overflow-x: auto;
 }
 
 .terminal-line {
