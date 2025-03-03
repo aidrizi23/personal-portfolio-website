@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Albi Idrizi- Portfolio</title>
+    <title>Albi Idrizi - Portfolio</title>
     <meta name="description" content="Portfolio website showcasing the projects and skills of Albi Idrizi, a web developer and computer science student.">
-    <meta name="keywords" content="Albi IDrizi, web developer, portfolio, student projects, albi idrizi, albi, idrizi, portfolio website, portfolio">
+    <meta name="keywords" content="Albi Idrizi, web developer, portfolio, student projects, albi idrizi, albi, idrizi, portfolio website, portfolio">
     <meta name="author" content="Albi Idrizi">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- used for some of the icons in the buttons -->
+    <!-- Preload the Inter font for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-theme="dark">
+    <!-- Dark Mode Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
     <div class="container">
         <header>
             <nav>
                 <a href="#" class="logo-name">Albi Idrizi</a>
-                <div class="nav-links">
+                <div class="nav-links" id="navLinks">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
                     <a href="blog.html">Blog</a>
                     <a href="#contact">Contact</a>
                 </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </header>
 
-        <!-- home section -->
+        <!-- Home section with 3D terminal -->
         <section class="home" id="home">
             <div class="home-content">
                 <h1>.NET Developer</h1>
                 <p>Building Scalable Solutions & Robust APIs</p>
-                <div >
-                    <a href="#contact"> Get in Touch </a>
+                <div>
+                    <a href="#contact">Get in Touch</a>
                     <a href="/Albi_Idrizi_Resume-9.pdf" download>
-                        <i class="fas fa-download"></i> Download CV 
+                        <i class="fas fa-download"></i> Download CV
                     </a>
                 </div>
             </div>
@@ -48,15 +63,19 @@
                 <div class="terminal-body" id="terminalBody">
                     <div class="terminal-line">
                         <span class="terminal-prompt">albi@portfolio:~$</span>
-                        <span class="terminal-text">Welcome to my portfolio! Type 'help' for available commands.</span>
+                        <span class="terminal-text" id="typingText">Welcome to my portfolio! Type 'help' for available commands.</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">albi@portfolio:~$</span>
+                        <span class="terminal-input" id="userInput"></span>
                     </div>
                 </div>
             </div>
         </section>
 
-
+        <!-- About section with floating image -->
         <section class="about" id="about">
-            <img src="/image.svg?height=400&width=400" alt="Profile Picture" class="profile-img">
+            <img src="/api/placeholder/400/400" alt="Profile Picture" class="profile-img">
             <div>
                 <h2>About Me</h2>
                 <p>Junior .NET Backend Developer specializing in building high-performance, scalable microservices and distributed systems. Passionate about clean architecture and cloud-native solutions.</p>
@@ -65,79 +84,78 @@
                     <span class="tech-badge">C#</span>
                     <span class="tech-badge">SQL Server</span>
                     <span class="tech-badge">Azure</span>
-                    <span class = "tech-badge">Rest Api</span>
-                    <span class = "tech-badge">Python</span>
-                    <span class = "tech-badge">Django</span>
-                    <span class = "tech-badge">Golang/span>
+                    <span class="tech-badge">Rest API</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Django</span>
+                    <span class="tech-badge">Golang</span>
                 </div>
             </div>
         </section>
 
-
-
-        <section class="projects" id="projects">
-            <div class="project-card">
-                <img src="/placeholder.svg?height=200&width=300" alt="Test Program Platform" class="project-img">
-                <h3>Test Program Platform</h3>
-                <p>Local test taking platform made with .net 8. Using the MVC Pattern, Dependency Injection and also Identity Services.</p>
-                <div class="code-block">
-                    <code>public async Task&lt;IActionResult&gt; Test()</code>
+        <!-- Projects section with 3D cards -->
+        <section id="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="Test Program Platform" class="project-img">
+                    <h3>Test Program Platform</h3>
+                    <p>Local test taking platform made with .NET 8. Using the MVC Pattern, Dependency Injection and also Identity Services.</p>
+                    <div class="code-block">
+                        <code>public async Task&lt;IActionResult&gt; Test()</code>
+                    </div>
+                    <a href="https://github.com/a/TestProgram" class="btn btn-github" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
                 </div>
-                <a href="https://github.com/a/TestProgram" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-            </div>
 
-            <div class="project-card">
-                <img src="/placeholder.svg?height=200&width=300" alt="Second Hand Ecommerce Store" class="project-img">
-                <h3>Second Hand Ecommerce Store</h3>
-                <p>Open Source backend project for an fully functional basic ecommerce store for second hand products</p>
-                <div class="code-block">
-                    <code>public async Task&lt;IActionResult&gt; Buy()</code>
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="Second Hand Ecommerce Store" class="project-img">
+                    <h3>Second Hand Ecommerce Store</h3>
+                    <p>Open Source backend project for a fully functional basic ecommerce store for second hand products.</p>
+                    <div class="code-block">
+                        <code>public async Task&lt;IActionResult&gt; Buy()</code>
+                    </div>
+                    <a href="https://github.com/aidrizi23/Ecommerce2" class="btn btn-github" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
                 </div>
-                <a href="https://github.com/aidrizi23/Ecommerce2" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-            </div>
 
-            <div class="project-card">
-                <img src="/placeholder.svg?height=200&width=300" alt="Nest Albania" class="project-img">
-                <h3>Nest Albania</h3>
-                <p>Real Estate agency management web application with analytics tools implemented.</p>
-                <div class="code-block">
-                    <code>public async Task&lt;IActionResult&gt; Rent()</code>
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="Nest Albania" class="project-img">
+                    <h3>Nest Albania</h3>
+                    <p>Real Estate agency management web application with analytics tools implemented.</p>
+                    <div class="code-block">
+                        <code>public async Task&lt;IActionResult&gt; Rent()</code>
+                    </div>
                 </div>
-                <!-- <a href="https://github.com/aidrizi23/nest-albania" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a> -->
-                <!--not adding it for now because it is still a private repo  -->
-            </div>
 
-            <div class="project-card">
-                <img src="/personal-portfolio.png?height=200&width=300" alt="Personal Portfolio Website" class="project-img">
-                <h3>Personal Portfolio website</h3>
-                <p>Personal portfolio website (this one) made using only html css and pure javascript</p>
-                <div class="code-block">
-                    <code>public async Task&lt;IActionResult&gt; Hire()</code>
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="Personal Portfolio Website" class="project-img">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>Personal portfolio website (this one) made using only HTML, CSS, and pure JavaScript.</p>
+                    <div class="code-block">
+                        <code>public async Task&lt;IActionResult&gt; Hire()</code>
+                    </div>
+                    <a href="https://github.com/aidrizi23/personal-portfolio-website" class="btn btn-github" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
                 </div>
-                <a href="https://github.com/aidrizi23/personal-portfolio-website" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-            </div>
 
-            <div class="project-card">
-                <img src="/placeholder.svg?height=200&width=300" alt="Python Web Scraper" class="project-img">
-                <h3>Python web scraper</h3>
-                <p>Web Scraper for albanaian properties on Century21 Website</p>
-                <div class="code-block">
-                    <code>public async Task&lt;IActionResult&gt; Process()</code>
+                <div class="project-card">
+                    <img src="/api/placeholder/300/200" alt="Python Web Scraper" class="project-img">
+                    <h3>Python Web Scraper</h3>
+                    <p>Web Scraper for Albanian properties on Century21 Website.</p>
+                    <div class="code-block">
+                        <code>public async Task&lt;IActionResult&gt; Process()</code>
+                    </div>
+                    <a href="https://github.com/aidrizi23/Century21_house_finder" class="btn btn-github" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
                 </div>
-                <a href="https://github.com/aidrizi23/Century21_house_finder" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
             </div>
         </section>
 
+        <!-- Contact section with 3D form -->
         <section class="contact" id="contact">
             <h2>Get in Touch</h2>
             <form id="contact-form" class="contact-form" onsubmit="event.preventDefault(); sendEmail();">
@@ -153,49 +171,256 @@
                     <label for="message">Message</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
             </form>
         </section>
-        
-    
+
         <footer>
-            <p>&copy; 2024 .NET Backend Developer | Albi Idrizi</p>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://github.com/aidrizi23" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/albi-idrizi" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:albiidrizi27@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <p>&copy; 2024 .NET Backend Developer | Albi Idrizi</p>
+            </div>
         </footer>
     </div>
 
-    <script src="script.js"></script>
-
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
+        // Initialize EmailJS
         (function() {
-            emailjs.init("hlf4vibdNVOLMu0OP"); // EmailJS user ID
+            emailjs.init("hlf4vibdNVOLMu0OP");
         })();
-    
+        
+        // Email sending function
         function sendEmail() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value + "\n\n" + email;
-    
+            
             const params = {
                 from_name: name,
                 from_email: "albiidrizi27@gmail.com",
                 message: message,
             };
-    
+            
+            // Show sending indicator
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
             emailjs.send('service_y6kwytg', 'template_5pv3bpc', params)
                 .then(function(response) {
                     console.log('SUCCESS!', response);
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                        submitBtn.disabled = false;
+                    }, 2000);
+                    document.getElementById('contact-form').reset();
                 }, function(error) {
                     console.log('FAILED...', error);
+                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed!';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                        submitBtn.disabled = false;
+                    }, 2000);
                 });
-
-            // now just clear the form
-            document.getElementById('contact-form').reset();
-
         }
+        
+        // Terminal typing effect
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            
+            themeToggle.addEventListener('click', () => {
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+            
+            // Check user preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.setAttribute('data-theme', savedTheme);
+            }
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when link is clicked
+            const navLinksArray = document.querySelectorAll('.nav-links a');
+            navLinksArray.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Terminal functionality
+            const terminalBody = document.getElementById('terminalBody');
+            const userInput = document.getElementById('userInput');
+            
+            // Simulate typing
+            const text = "Welcome to my portfolio! Type 'help' for available commands.";
+            const typingText = document.getElementById('typingText');
+            typingText.textContent = "";
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < text.length) {
+                    typingText.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, Math.random() * 50 + 30);
+                } else {
+                    // Blinking cursor after typing
+                    setTimeout(() => {
+                        userInput.classList.add('typing');
+                    }, 500);
+                }
+            }
+            
+            // Start typing animation
+            setTimeout(typeWriter, 500);
+            
+            // Terminal command functionality
+            document.addEventListener('keydown', function(event) {
+                if (document.activeElement !== userInput && 
+                    document.activeElement.tagName !== 'INPUT' && 
+                    document.activeElement.tagName !== 'TEXTAREA') {
+                    
+                    if (event.key.length === 1) {
+                        userInput.textContent += event.key;
+                    } else if (event.key === 'Backspace') {
+                        userInput.textContent = userInput.textContent.slice(0, -1);
+                    } else if (event.key === 'Enter') {
+                        processCommand(userInput.textContent.trim());
+                        userInput.textContent = '';
+                    }
+                }
+            });
+            
+            function processCommand(cmd) {
+                const commandLine = document.createElement('div');
+                commandLine.className = 'terminal-line';
+                commandLine.innerHTML = `
+                    <span class="terminal-prompt">albi@portfolio:~$</span>
+                    <span class="terminal-text">${cmd}</span>
+                `;
+                
+                const outputLine = document.createElement('div');
+                outputLine.className = 'terminal-line';
+                
+                let output = '';
+                
+                switch(cmd.toLowerCase()) {
+                    case 'help':
+                        output = `Available commands:
+                            <br>- about: Learn about me
+                            <br>- projects: View my projects
+                            <br>- contact: Get my contact info
+                            <br>- skills: See my technical skills
+                            <br>- clear: Clear the terminal`;
+                        break;
+                    case 'about':
+                        output = "Junior .NET Backend Developer specializing in building high-performance, scalable microservices and distributed systems.";
+                        break;
+                    case 'projects':
+                        output = "Check out my GitHub: https://github.com/aidrizi23";
+                        break;
+                    case 'contact':
+                        output = "Email: albiidrizi27@gmail.com";
+                        break;
+                    case 'skills':
+                        output = ".NET 6+, C#, SQL Server, Azure, REST API, Python, Django, Golang";
+                        break;
+                    case 'clear':
+                        // Remove all lines except the input line
+                        while (terminalBody.children.length > 1) {
+                            terminalBody.removeChild(terminalBody.firstChild);
+                        }
+                        return;
+                    default:
+                        output = `Command not found: ${cmd}. Type 'help' for available commands.`;
+                }
+                
+                outputLine.innerHTML = `<span class="terminal-output">${output}</span>`;
+                
+                // Adjust terminal
+                terminalBody.insertBefore(commandLine, terminalBody.lastChild);
+                terminalBody.insertBefore(outputLine, terminalBody.lastChild);
+                
+                // Auto scroll to bottom
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+            
+            // Animation on scroll
+            const animatedElements = document.querySelectorAll('.about, .project-card, .contact');
+            
+            function checkScroll() {
+                animatedElements.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.8) {
+                        el.classList.add('animate');
+                    }
+                });
+            }
+            
+            // Initial check in case elements are already in view
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // 3D effect on project cards
+            const cards = document.querySelectorAll('.project-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                    card.style.transition = 'transform 0.5s ease';
+                });
+            });
+        });
     </script>
-    
 </body>
 </html>

@@ -335,4 +335,35 @@ You can also use the contact form below to send me a message.`;
   
   window.addEventListener('scroll', animateOnScroll);
   animateOnScroll(); // Run once on load
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Create dark mode toggle button
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.innerHTML = `
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+    `;
+    document.body.appendChild(themeToggle);
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Add rotation animation on click
+      themeToggle.style.animation = 'rotate 0.5s ease';
+      setTimeout(() => {
+        themeToggle.style.animation = '';
+      }, 500);
+    });
+  });
 });
