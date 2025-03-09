@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Albi Idrizi - Portfolio</title>
-    <meta name="description" content="Portfolio website showcasing the projects and skills of Albi Idrizi, a web developer and computer science student.">
-    <meta name="keywords" content="Albi Idrizi, web developer, portfolio, student projects, albi idrizi, albi, idrizi, portfolio website, portfolio">
+    <link rel="stylesheet" href="style2.css">
+    <title>Albi Idrizi - .NET Developer Portfolio</title>
+    <meta name="description" content="Professional portfolio of Albi Idrizi, a .NET Backend Developer specializing in building high-performance, scalable microservices and distributed systems.">
+    <meta name="keywords" content="Albi Idrizi, .NET developer, C#, backend developer, microservices, portfolio, software engineer">
     <meta name="author" content="Albi Idrizi">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Preload the Inter font for better performance -->
@@ -14,6 +14,87 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Fix for About.cs in light mode */
+        [data-theme="light"] .code-body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        [data-theme="light"] .code-body .keyword {
+            color: #0000ff;
+        }
+        
+        [data-theme="light"] .code-body .string {
+            color: #a31515;
+        }
+        
+        [data-theme="light"] .code-body .class-name {
+            color: #2b91af;
+        }
+        
+        /* Terminal styling improvements */
+        .terminal-body {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .terminal-line {
+            margin-bottom: 5px;
+            display: block;
+            line-height: 1.5;
+        }
+        
+        .terminal-prompt {
+            color: #0f0;
+            margin-right: 10px;
+        }
+        
+        .terminal-input-container {
+            display: inline;
+            position: relative;
+        }
+        
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            width: calc(100% - 150px);
+            caret-color: #fff;
+        }
+        
+        .terminal-text, .terminal-output {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .output-line {
+            padding-left: 15px;
+        }
+        
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background-color: #fff;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
 </head>
 <body data-theme="dark">
     <!-- Dark Mode Toggle Button -->
@@ -25,7 +106,9 @@
     <div class="container">
         <header>
             <nav>
-                <a href="#" class="logo-name">Albi Idrizi</a>
+                <a href="#" class="logo-name">
+                    <span class="logo-symbol">&lt;/&gt;</span> Albi Idrizi
+                </a>
                 <div class="nav-links" id="navLinks">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
@@ -42,43 +125,104 @@
         <!-- Home section with 3D terminal -->
         <section class="home" id="home">
             <div class="home-content">
+                <div class="typing-container">
+                    <span class="pre-text">I'm a</span>
+                    <span class="typing" id="typing-text"></span>
+                </div>
                 <h1>.NET Developer</h1>
                 <p>Building Scalable Solutions & Robust APIs</p>
-                <div>
-                    <a href="#contact">Get in Touch</a>
-                    <a href="/Albi_Idrizi_Resume-9.pdf" download>
+                <div class="cta-buttons">
+                    <a href="#contact" class="primary-btn">
+                        <i class="fas fa-envelope"></i> Get in Touch
+                    </a>
+                    <a href="/Albi_Idrizi_Resume-9.pdf" download class="secondary-btn">
                         <i class="fas fa-download"></i> Download CV
                     </a>
                 </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                </div>
             </div>
-            <div class="terminal">
-                <div class="terminal-header">
-                    <div class="terminal-buttons">
-                        <span class="terminal-button close"></span>
-                        <span class="terminal-button minimize"></span>
-                        <span class="terminal-button maximize"></span>
+            <div class="terminal-container">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="terminal-button close"></span>
+                            <span class="terminal-button minimize"></span>
+                            <span class="terminal-button maximize"></span>
+                        </div>
+                        <div class="terminal-title">albi@portfolio:~</div>
                     </div>
-                    <div class="terminal-title">albi@portfolio:~</div>
-                </div>
-                <div class="terminal-body" id="terminalBody">
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">albi@portfolio:~$</span>
-                        <span class="terminal-text" id="typingText">Welcome to my portfolio! Type 'help' for available commands.</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">albi@portfolio:~$</span>
-                        <span class="terminal-input" id="userInput"></span>
+                    <div class="terminal-body" id="terminalBody">
+                        <!-- Terminal content will be dynamically added by JavaScript -->
                     </div>
                 </div>
+                <div class="terminal-shadow"></div>
             </div>
         </section>
 
-        <!-- About section with floating image -->
+        <!-- About section with code illustration -->
         <section class="about" id="about">
-            <img src="/api/placeholder/400/400" alt="Profile Picture" class="profile-img">
-            <div>
+            <div class="code-illustration">
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-buttons">
+                            <span class="code-button"></span>
+                            <span class="code-button"></span>
+                            <span class="code-button"></span>
+                        </div>
+                        <div class="code-title">About.cs</div>
+                    </div>
+                    <div class="code-body">
+                        <pre><code><span class="keyword">using</span> System;
+<span class="keyword">using</span> System.Collections.Generic;
+
+<span class="keyword">namespace</span> Portfolio
+{
+    <span class="keyword">public class</span> <span class="class-name">Developer</span>
+    {
+        <span class="keyword">public string</span> Name { <span class="keyword">get</span>; } = <span class="string">"Albi Idrizi"</span>;
+        <span class="keyword">public string</span> Role { <span class="keyword">get</span>; } = <span class="string">".NET Backend Developer"</span>;
+        <span class="keyword">public List&lt;string&gt;</span> Skills { <span class="keyword">get</span>; }
+
+        <span class="keyword">public</span> Developer()
+        {
+            Skills = <span class="keyword">new</span>() 
+            { 
+                <span class="string">".NET 6+"</span>, 
+                <span class="string">"C#"</span>, 
+                <span class="string">"SQL Server"</span>,
+                <span class="string">"Azure"</span>,
+                <span class="string">"REST API"</span>
+            };
+        }
+
+        <span class="keyword">public string</span> GetBio() 
+        {
+            <span class="keyword">return</span> <span class="string">"Specializing in building high-performance, scalable microservices and distributed systems."</span>;
+        }
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
                 <h2>About Me</h2>
                 <p>Junior .NET Backend Developer specializing in building high-performance, scalable microservices and distributed systems. Passionate about clean architecture and cloud-native solutions.</p>
+                <p>With a strong foundation in C# and the .NET ecosystem, I craft robust backend applications that deliver exceptional performance and maintainability.</p>
                 <div class="tech-stack">
                     <span class="tech-badge">.NET 6+</span>
                     <span class="tech-badge">C#</span>
@@ -92,16 +236,24 @@
             </div>
         </section>
 
-        <!-- Projects section with 3D cards -->
+        <!-- Projects section with enhanced 3D cards -->
         <section id="projects">
-            <h2 class="section-title">My Projects</h2>
+            <h2 class="section-title">Featured Projects</h2>
             <div class="projects">
                 <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-code project-icon"></i>
+                        <h3>Test Program Platform</h3>
+                    </div>
                     <img src="/api/placeholder/300/200" alt="Test Program Platform" class="project-img">
-                    <h3>Test Program Platform</h3>
                     <p>Local test taking platform made with .NET 8. Using the MVC Pattern, Dependency Injection and also Identity Services.</p>
                     <div class="code-block">
                         <code>public async Task&lt;IActionResult&gt; Test()</code>
+                    </div>
+                    <div class="project-technologies">
+                        <span class="project-tech">.NET 8</span>
+                        <span class="project-tech">C#</span>
+                        <span class="project-tech">MVC</span>
                     </div>
                     <a href="https://github.com/a/TestProgram" class="btn btn-github" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i> View on GitHub
@@ -109,11 +261,19 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-shopping-cart project-icon"></i>
+                        <h3>Second Hand Ecommerce Store</h3>
+                    </div>
                     <img src="/api/placeholder/300/200" alt="Second Hand Ecommerce Store" class="project-img">
-                    <h3>Second Hand Ecommerce Store</h3>
                     <p>Open Source backend project for a fully functional basic ecommerce store for second hand products.</p>
                     <div class="code-block">
                         <code>public async Task&lt;IActionResult&gt; Buy()</code>
+                    </div>
+                    <div class="project-technologies">
+                        <span class="project-tech">.NET</span>
+                        <span class="project-tech">EF Core</span>
+                        <span class="project-tech">API</span>
                     </div>
                     <a href="https://github.com/aidrizi23/Ecommerce2" class="btn btn-github" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i> View on GitHub
@@ -121,20 +281,36 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-home project-icon"></i>
+                        <h3>Nest Albania</h3>
+                    </div>
                     <img src="/api/placeholder/300/200" alt="Nest Albania" class="project-img">
-                    <h3>Nest Albania</h3>
                     <p>Real Estate agency management web application with analytics tools implemented.</p>
                     <div class="code-block">
                         <code>public async Task&lt;IActionResult&gt; Rent()</code>
                     </div>
+                    <div class="project-technologies">
+                        <span class="project-tech">.NET</span>
+                        <span class="project-tech">SQL</span>
+                        <span class="project-tech">Analytics</span>
+                    </div>
                 </div>
 
                 <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-laptop-code project-icon"></i>
+                        <h3>Personal Portfolio Website</h3>
+                    </div>
                     <img src="/api/placeholder/300/200" alt="Personal Portfolio Website" class="project-img">
-                    <h3>Personal Portfolio Website</h3>
                     <p>Personal portfolio website (this one) made using only HTML, CSS, and pure JavaScript.</p>
                     <div class="code-block">
                         <code>public async Task&lt;IActionResult&gt; Hire()</code>
+                    </div>
+                    <div class="project-technologies">
+                        <span class="project-tech">HTML</span>
+                        <span class="project-tech">CSS</span>
+                        <span class="project-tech">JavaScript</span>
                     </div>
                     <a href="https://github.com/aidrizi23/personal-portfolio-website" class="btn btn-github" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i> View on GitHub
@@ -142,11 +318,19 @@
                 </div>
 
                 <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-search project-icon"></i>
+                        <h3>Python Web Scraper</h3>
+                    </div>
                     <img src="/api/placeholder/300/200" alt="Python Web Scraper" class="project-img">
-                    <h3>Python Web Scraper</h3>
                     <p>Web Scraper for Albanian properties on Century21 Website.</p>
                     <div class="code-block">
                         <code>public async Task&lt;IActionResult&gt; Process()</code>
+                    </div>
+                    <div class="project-technologies">
+                        <span class="project-tech">Python</span>
+                        <span class="project-tech">BeautifulSoup</span>
+                        <span class="project-tech">Pandas</span>
                     </div>
                     <a href="https://github.com/aidrizi23/Century21_house_finder" class="btn btn-github" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i> View on GitHub
@@ -155,31 +339,76 @@
             </div>
         </section>
 
-        <!-- Contact section with 3D form -->
+        <!-- Contact section with enhanced 3D form -->
         <section class="contact" id="contact">
             <h2>Get in Touch</h2>
-            <form id="contact-form" class="contact-form" onsubmit="event.preventDefault(); sendEmail();">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>albiidrizi27@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Albania</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p>github.com/aidrizi23</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/albi-idrizi</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <span>Send Message</span>
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
+                <form id="contact-form" class="contact-form" onsubmit="event.preventDefault(); sendEmail();">
+                    <div class="form-header">
+                        <h3>Send a Message</h3>
+                        <p>I'll get back to you as soon as possible</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
         </section>
 
         <footer>
             <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-symbol">&lt;/&gt;</span> Albi Idrizi
+                </div>
+                <div class="footer-nav">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
                 <div class="social-links">
                     <a href="https://github.com/aidrizi23" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i>
@@ -187,60 +416,99 @@
                     <a href="https://linkedin.com/in/albi-idrizi" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:albiidrizi27@gmail.com">
+                    <a href="/cdn-cgi/l/email-protection#ed8c818f8484899f849784dfdaad8a808c8481c38e8280">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
-                <p>&copy; 2024 .NET Backend Developer | Albi Idrizi</p>
+                <p>&copy; 2025 .NET Backend Developer | Albi Idrizi</p>
             </div>
         </footer>
     </div>
 
+    <!-- External scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <!-- Combined script for all functionality -->
     <script>
-        // Initialize EmailJS
-        (function() {
-            emailjs.init("hlf4vibdNVOLMu0OP");
-        })();
-        
-        // Email sending function
-        function sendEmail() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value + "\n\n" + email;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS
+            (function() {
+                emailjs.init("hlf4vibdNVOLMu0OP");
+            })();
             
-            const params = {
-                from_name: name,
-                from_email: "albiidrizi27@gmail.com",
-                message: message,
+            // Email sending function
+            window.sendEmail = function() {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value + "\n\n" + email;
+                
+                const params = {
+                    from_name: name,
+                    from_email: "albiidrizi27@gmail.com",
+                    message: message,
+                };
+                
+                // Show sending indicator
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                emailjs.send('service_6uv80hy', 'template_5pv3bpc', params)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response);
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                        setTimeout(() => {
+                            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                            submitBtn.disabled = false;
+                        }, 2000);
+                        document.getElementById('contact-form').reset();
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                        submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed!';
+                        setTimeout(() => {
+                            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    });
             };
             
-            // Show sending indicator
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
+            // Typing effect for role title
+            const roles = [".NET Developer", "Backend Engineer", "C# Specialist", "API Designer"];
+            const typingTextElement = document.getElementById('typing-text');
+            let roleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
             
-            emailjs.send('service_6uv80hy', 'template_5pv3bpc', params)
-                .then(function(response) {
-                    console.log('SUCCESS!', response);
-                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-                    setTimeout(() => {
-                        submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-                        submitBtn.disabled = false;
-                    }, 2000);
-                    document.getElementById('contact-form').reset();
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed!';
-                    setTimeout(() => {
-                        submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-                        submitBtn.disabled = false;
-                    }, 2000);
-                });
-        }
-        
-        // Terminal typing effect
-        document.addEventListener('DOMContentLoaded', function() {
+            function typeRole() {
+                const currentRole = roles[roleIndex];
+                
+                if (isDeleting) {
+                    typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50;
+                } else {
+                    typingTextElement.textContent = currentRole.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100;
+                }
+                
+                if (!isDeleting && charIndex === currentRole.length) {
+                    isDeleting = true;
+                    typingSpeed = 1500; // Pause at the end
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    typingSpeed = 500; // Pause before typing new role
+                }
+                
+                setTimeout(typeRole, typingSpeed);
+            }
+            
+            // Start typing roles
+            setTimeout(typeRole, 1000);
+            
             // Theme toggle functionality
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
@@ -280,124 +548,301 @@
                 });
             });
             
-            // Terminal functionality
-            const terminalBody = document.getElementById('terminalBody');
-            const userInput = document.getElementById('userInput');
+            // =============== Terminal Functionality ===============
+            const terminal = document.getElementById('terminalBody');
+            let commandHistory = [];
+            let historyIndex = -1;
             
-            // Simulate typing
-            const text = "Welcome to my portfolio! Type 'help' for available commands.";
-            const typingText = document.getElementById('typingText');
-            typingText.textContent = "";
-            
-            let i = 0;
-            function typeWriter() {
-                if (i < text.length) {
-                    typingText.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, Math.random() * 50 + 30);
-                } else {
-                    // Blinking cursor after typing
-                    setTimeout(() => {
-                        userInput.classList.add('typing');
-                    }, 500);
-                }
+            // Array of quotes by famous programmers and technologists
+            const quotes = [
+                "The only way to do great work is to love what you do. - Steve Jobs",
+                "Innovation distinguishes between a leader and a follower. - Steve Jobs",
+                "Stay hungry, stay foolish. - Steve Jobs",
+                "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+                "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
+                "Good code is its own best documentation. - Steve McConnell",
+                "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler",
+                "First, solve the problem. Then, write the code. - John Johnson",
+                "Programming isn't about what you know; it's about what you can figure out. - Chris Pine",
+                "Clean code always looks like it was written by someone who cares. - Robert C. Martin"
+            ];
+
+            // Function to get a random quote
+            function getRandomQuote() {
+                return quotes[Math.floor(Math.random() * quotes.length)];
             }
-            
-            // Start typing animation
-            setTimeout(typeWriter, 500);
-            
-            // Terminal command functionality
-            document.addEventListener('keydown', function(event) {
-                if (document.activeElement !== userInput && 
-                    document.activeElement.tagName !== 'INPUT' && 
-                    document.activeElement.tagName !== 'TEXTAREA') {
-                    
-                    if (event.key.length === 1) {
-                        userInput.textContent += event.key;
-                    } else if (event.key === 'Backspace') {
-                        userInput.textContent = userInput.textContent.slice(0, -1);
-                    } else if (event.key === 'Enter') {
-                        processCommand(userInput.textContent.trim());
-                        userInput.textContent = '';
-                    }
-                }
-            });
-            
-            function processCommand(cmd) {
-                const commandLine = document.createElement('div');
-                commandLine.className = 'terminal-line';
-                commandLine.innerHTML = `
-                    <span class="terminal-prompt">albi@portfolio:~$</span>
-                    <span class="terminal-text">${cmd}</span>
-                `;
+
+            // Function to add a new line to the terminal
+            function addTerminalLine(content) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.innerHTML = content;
+                terminal.appendChild(line);
                 
-                const outputLine = document.createElement('div');
-                outputLine.className = 'terminal-line';
+                // Scroll to bottom of terminal
+                terminal.scrollTop = terminal.scrollHeight;
                 
-                let output = '';
-                
-                switch(cmd.toLowerCase()) {
-                    case 'help':
-                        output = `Available commands:
-                            <br>- about: Learn about me
-                            <br>- projects: View my projects
-                            <br>- contact: Get my contact info
-                            <br>- skills: See my technical skills
-                            <br>- clear: Clear the terminal`;
-                        break;
-                    case 'about':
-                        output = "Junior .NET Backend Developer specializing in building high-performance, scalable microservices and distributed systems.";
-                        break;
-                    case 'projects':
-                        output = "Check out my GitHub: https://github.com/aidrizi23";
-                        break;
-                    case 'contact':
-                        output = "Email: albiidrizi27@gmail.com";
-                        break;
-                    case 'skills':
-                        output = ".NET 6+, C#, SQL Server, Azure, REST API, Python, Django, Golang";
-                        break;
-                    case 'clear':
-                        // Remove all lines except the input line
-                        while (terminalBody.children.length > 1) {
-                            terminalBody.removeChild(terminalBody.firstChild);
-                        }
-                        return;
-                    default:
-                        output = `Command not found: ${cmd}. Type 'help' for available commands.`;
-                }
-                
-                outputLine.innerHTML = `<span class="terminal-output">${output}</span>`;
-                
-                // Adjust terminal
-                terminalBody.insertBefore(commandLine, terminalBody.lastChild);
-                terminalBody.insertBefore(outputLine, terminalBody.lastChild);
-                
-                // Auto scroll to bottom
-                terminalBody.scrollTop = terminalBody.scrollHeight;
+                return line;
             }
-            
-            // Animation on scroll
-            const animatedElements = document.querySelectorAll('.about, .project-card, .contact');
-            
-            function checkScroll() {
-                animatedElements.forEach(el => {
-                    const elementTop = el.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight * 0.8) {
-                        el.classList.add('animate');
-                    }
+
+            // Function to add output to the terminal
+            function addOutput(output) {
+                if (!output) return;
+                
+                // Handle multi-line output
+                const lines = output.split('\n');
+                
+                lines.forEach(line => {
+                    addTerminalLine(`<span class="output-line">${line}</span>`);
                 });
             }
+
+            // Function to create a new command line with input
+            function createCommandLine() {
+                const line = addTerminalLine(`
+                    <span class="terminal-prompt">albi@portfolio:~$</span>
+                    <span class="terminal-input-container">
+                        <input type="text" class="terminal-input" autocomplete="off" spellcheck="false">
+                        <span class="terminal-cursor"></span>
+                    </span>
+                `);
+                
+                const input = line.querySelector('.terminal-input');
+                input.focus();
+                
+                // Handle input events
+                input.addEventListener('keydown', handleInputKeydown);
+                
+                return input;
+            }
+
+            // Function to handle terminal input
+            function processCommand(input) {
+                // Add to command history if not empty
+                if (input && !commandHistory.includes(input)) {
+                    commandHistory.push(input);
+                    historyIndex = commandHistory.length;
+                }
+
+                // Parse command and arguments
+                const args = input.split(' ');
+                const command = args[0].toLowerCase();
+                
+                switch(command) {
+                    case 'help':
+                        return `Available commands:
+help - Show this help message
+clear - Clear the terminal
+about - Show information about me
+quote - Display a random programming quote
+whoami - Display who I am
+skills - List my technical skills
+projects - List my projects
+contact - Show contact information
+echo <text> - Display the provided text
+rev <text> - Reverse the provided text
+date - Show current date and time
+refresh - Reload the page
+github - Open my GitHub profile
+linkedin - Open my LinkedIn profile
+weather <city> - Show weather for a city (simulated)
+calc <expression> - Calculate a simple math expression`;
+                    
+                    case 'clear':
+                        terminal.innerHTML = '';
+                        return '';
+                    
+                    case 'about':
+                        return `I'm Albi Idrizi, a backend .NET developer specializing in building scalable solutions and robust APIs.
+I'm passionate about clean architecture, microservices, and cloud-native applications.
+Currently focusing on .NET 6+ development with C# and Azure.`;
+                    
+                    case 'quote':
+                        return getRandomQuote();
+                    
+                    case 'whoami':
+                        return 'Albi Idrizi - .NET Backend Developer';
+                    
+                    case 'skills':
+                        return `.NET Core/6+, C#, ASP.NET, REST APIs
+SQL Server, Entity Framework, LINQ
+Azure, Docker, Microservices
+Python, Django, Go
+Git, CI/CD, Agile Methodologies`;
+                    
+                    case 'echo':
+                        return args.slice(1).join(' ');
+                    
+                    case 'rev':
+                        return reverseString(args.slice(1).join(' '));
+                    
+                    case 'date':
+                        return new Date().toLocaleString();
+                    
+                    case 'refresh':
+                        location.reload();
+                        return '';
+                    
+                    case 'github':
+                        window.open('https://github.com/aidrizi23', '_blank');
+                        return 'Opening GitHub profile...';
+                    
+                    case 'linkedin':
+                        window.open('https://linkedin.com/in/albi-idrizi', '_blank');
+                        return 'Opening LinkedIn profile...';
+                    
+                    case 'projects':
+                        return `My projects:
+1. Test Program Platform - Local test taking platform with .NET 8
+2. Second Hand Ecommerce Store - Backend for second hand products
+3. Nest Albania - Real Estate agency management application
+4. Personal Portfolio Website - This website
+5. Python Web Scraper - Web scraper for Century21 properties
+
+Type 'project <number>' for more details`;
+
+                    case 'project':
+                        const projectNum = parseInt(args[1]);
+                        if (isNaN(projectNum) || projectNum < 1 || projectNum > 5) {
+                            return 'Please provide a valid project number (1-5)';
+                        }
+                        
+                        const projects = [
+                            'Test Program Platform: Local test taking platform built with .NET 8, MVC pattern, Dependency Injection and Identity Services.',
+                            'Second Hand Ecommerce Store: Open source backend project for a functional ecommerce store for second hand products.',
+                            'Nest Albania: Real Estate agency management web application with integrated analytics tools.',
+                            'Personal Portfolio Website: This website built with HTML, CSS, and vanilla JavaScript.',
+                            'Python Web Scraper: Web scraper for Albanian properties on Century21 website.'
+                        ];
+                        
+                        return projects[projectNum - 1];
+                    
+                    case 'contact':
+                        return `Email: albiidrizi27@gmail.com
+GitHub: github.com/aidrizi23
+You can also use the contact form below to send me a message.`;
+                    
+                    case 'weather':
+                        if (!args[1]) return 'Please specify a city. Example: weather London';
+                        const city = args.slice(1).join(' ');
+                        const temps = [15, 18, 20, 22, 25, 17, 19, 21, 24, 16];
+                        const temp = temps[Math.floor(Math.random() * temps.length)];
+                        const conditions = ['Sunny', 'Cloudy', 'Partly Cloudy', 'Rainy', 'Clear'];
+                        const condition = conditions[Math.floor(Math.random() * conditions.length)];
+                        return `Weather in ${city}: ${temp}°C, ${condition}`;
+                    
+                    case 'calc':
+                        if (!args[1]) return 'Please provide an expression. Example: calc 5+5';
+                        const expr = args.slice(1).join('');
+                        try {
+                            // Simple safe evaluation for basic math
+                            // Note: This is a simplified version and not secure for production
+                            const sanitized = expr.replace(/[^0-9+\-*/.()]/g, '');
+                            const result = Function('"use strict";return (' + sanitized + ')')();
+                            return `${expr} = ${result}`;
+                        } catch (e) {
+                            return 'Invalid expression';
+                        }
+                        
+                    case '':
+                        return '';
+                        
+                    default:
+                        return `Command not found: ${command}. Type 'help' for available commands.`;
+                }
+            }
+
+            // Function to reverse characters in a string
+            function reverseString(str) {
+                return str.split('').reverse().join('');
+            }
+
+            // Function to handle input keydown events
+            function handleInputKeydown(e) {
+                const input = e.target;
+                
+                if (e.key === 'Enter') {
+                    // Get the input value
+                    const command = input.value.trim();
+                    
+                    // Replace the input with a static text
+                    const line = input.parentElement.parentElement;
+                    line.innerHTML = `<span class="terminal-prompt">albi@portfolio:~$</span> <span class="terminal-text">${command}</span>`;
+                    
+                    // Process the command
+                    const output = processCommand(command);
+                    if (output) {
+                        addOutput(output);
+                    }
+                    
+                    // Create a new command line
+                    createCommandLine();
+                } 
+                // Command history navigation
+                else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (historyIndex > 0) {
+                        historyIndex--;
+                        input.value = commandHistory[historyIndex];
+                    }
+                } 
+                else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (historyIndex < commandHistory.length - 1) {
+                        historyIndex++;
+                        input.value = commandHistory[historyIndex];
+                    } else {
+                        historyIndex = commandHistory.length;
+                        input.value = '';
+                    }
+                }
+                // Tab completion (simplified)
+                else if (e.key === 'Tab') {
+                    e.preventDefault();
+                    const commands = ['help', 'clear', 'about', 'quote', 'whoami', 'skills', 
+                                    'echo', 'rev', 'date', 'refresh', 'github', 'linkedin', 
+                                    'projects', 'project', 'contact', 'weather', 'calc'];
+                    const inputText = input.value.toLowerCase();
+                    
+                    for (const cmd of commands) {
+                        if (cmd.startsWith(inputText)) {
+                            input.value = cmd + ' ';
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Initialize terminal with welcome message
+            function initializeTerminal() {
+                addOutput("Welcome to Albi's portfolio terminal. Type 'help' for available commands.");
+                createCommandLine();
+            }
+
+            // Initialize terminal
+            initializeTerminal();
             
-            // Initial check in case elements are already in view
-            checkScroll();
+            // Animation on scroll with intersection observer
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
             
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
             
-            // 3D effect on project cards
+            const animatedElements = document.querySelectorAll('.about, .project-card, .contact, .contact-info, .contact-form');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // 3D effect on project cards with perspective
             const cards = document.querySelectorAll('.project-card');
             
             cards.forEach(card => {
@@ -412,13 +857,40 @@
                     const rotateX = (y - centerY) / 10;
                     const rotateY = (centerX - x) / 10;
                     
-                    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+                    
+                    // Add glow effect
+                    const glowX = (x / rect.width) * 100;
+                    const glowY = (y / rect.height) * 100;
+                    card.style.background = `
+                        radial-gradient(
+                            circle at ${glowX}% ${glowY}%, 
+                            var(--card-glow-light), 
+                            var(--card-bg) 70%
+                        )
+                    `;
                 });
                 
                 card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
-                    card.style.transition = 'transform 0.5s ease';
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                    card.style.background = 'var(--card-bg)';
+                    card.style.transition = 'transform 0.5s ease, background 0.5s ease';
                 });
+            });
+            
+            // Parallax effect for code window
+            const codeWindow = document.querySelector('.code-window');
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const aboutSection = document.querySelector('.about');
+                const aboutTop = aboutSection.offsetTop;
+                const aboutHeight = aboutSection.offsetHeight;
+                
+                if (scrollY > aboutTop - window.innerHeight && scrollY < aboutTop + aboutHeight) {
+                    const parallaxValue = (scrollY - (aboutTop - window.innerHeight)) * 0.05;
+                    codeWindow.style.transform = `translateY(-${parallaxValue}px) rotateY(-5deg)`;
+                }
             });
         });
     </script>
