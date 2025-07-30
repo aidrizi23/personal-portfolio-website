@@ -3,773 +3,764 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Albi Idrizi - .NET Developer Portfolio</title>
-    <meta name="description" content="Professional portfolio of Albi Idrizi, a .NET FullStack Developer specializing in building high-performance, scalable microservices and distributed systems.">
-    <meta name="keywords" content="Albi Idrizi, .NET developer, C#, FullStack developer, microservices, portfolio, software engineer">
+    <title>Albi Idrizi - Full-Stack Developer & Co-Founder</title>
+    <meta name="description" content="Professional portfolio of Albi Idrizi, a Full-Stack Developer specializing in .NET, Flutter, Python/Django, and co-founder of Veltric Solutions.">
+    <meta name="keywords" content="Albi Idrizi, .NET developer, Flutter developer, Python Django, Full-Stack developer, Veltric Solutions, software engineer">
     <meta name="author" content="Albi Idrizi">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Preload the Inter font for better performance -->
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body class="dark">
-    <div class="noise"></div>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <div class="container">
-        <header>
-            <nav>
-                <a href="#" class="logo-name">
-                    <span class="logo-symbol">&lt;/&gt;</span> Albi Idrizi
-                </a>
-                <div class="nav-links" id="navLinks">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </header>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-bg"></div>
+        <div class="particles" id="particles"></div>
+    </div>
 
-        <!-- Home section with 3D terminal -->
-        <section class="home" id="home">
-            <div class="home-content">
-                <div class="typing-container">
-                    <span class="pre-text">I'm a</span>
-                    <span class="typing" id="typing-text"></span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-text">AI</span>
+                <span class="logo-dot">.</span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge animate-fade-in">
+                    <i class="fas fa-circle"></i>
+                    Available for opportunities
                 </div>
-                <h1>.NET Developer</h1>
-                <p>Building Scalable Solutions & Robust APIs</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="primary-btn">
-                        <i class="fas fa-envelope"></i> Get in Touch
+                
+                <h1 class="hero-title animate-slide-up">
+                    Hi, I'm <span class="gradient-text">Albi Idrizi</span>
+                </h1>
+                
+                <div class="hero-subtitle animate-slide-up">
+                    <span class="typing-text" id="typingText"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                
+                <p class="hero-description animate-fade-in">
+                    Full-Stack Developer specializing in .NET, Flutter, and Python/Django. 
+                    Co-founder of <a href="https://veltric.net" target="_blank" class="highlight-link">Veltric Solutions</a>, 
+                    building scalable solutions and innovative applications.
+                </p>
+                
+                <div class="hero-cta animate-fade-in">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Get In Touch
                     </a>
-                    <a href="/Resume_Albi_Idrizi_9.pdf" download class="secondary-btn">
-                        <i class="fas fa-download"></i> Download CV
+                    <a href="Resume_Albi_Idrizi_12.pdf" download class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Download CV
                     </a>
                 </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-number">3+</span>
+                
+                <div class="hero-stats animate-fade-in">
+                    <div class="stat">
+                        <span class="stat-value" data-target="3">0</span>
+                        <span class="stat-suffix">+</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-number">5+</span>
+                    <div class="stat">
+                        <span class="stat-value" data-target="15">0</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" data-target="8">0</span>
+                        <span class="stat-suffix">+</span>
                         <span class="stat-label">Technologies</span>
                     </div>
                 </div>
             </div>
-            <div class="terminal-container">
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="terminal-button close"></span>
-                            <span class="terminal-button minimize"></span>
-                            <span class="terminal-button maximize"></span>
+            
+            <div class="hero-visual">
+                <div class="code-window animate-float">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
                         </div>
-                        <div class="terminal-title">albi@portfolio:~</div>
+                        <span class="window-title">Developer.cs</span>
                     </div>
-                    <div class="terminal-body" id="terminalBody">
-                        <!-- Terminal content will be dynamically added by JavaScript -->
-                    </div>
-                </div>
-                <div class="terminal-shadow"></div>
-            </div>
-        </section>
-
-        <!-- About section with code illustration -->
-        <section class="about" id="about">
-            <div class="code-illustration">
-                <div class="code-window">
-                    <div class="code-header">
-                        <div class="code-buttons">
-                            <span class="code-button"></span>
-                            <span class="code-button"></span>
-                            <span class="code-button"></span>
-                        </div>
-                        <div class="code-title">About.cs</div>
-                    </div>
-                    <div class="code-body">
-                        <pre><code><span class="keyword">using</span> System;
-<span class="keyword">using</span> System.Collections.Generic;
-
-<span class="keyword">namespace</span> Portfolio
+                    <div class="window-body">
+                        <pre><code><span class="keyword">public class</span> <span class="class">Developer</span>
 {
-    <span class="keyword">public class</span> <span class="class-name">Developer</span>
+    <span class="keyword">public string</span> Name => <span class="string">"Albi Idrizi"</span>;
+    <span class="keyword">public string</span> Role => <span class="string">"Full-Stack Developer"</span>;
+    <span class="keyword">public string</span> Company => <span class="string">"Veltric Solutions"</span>;
+    
+    <span class="keyword">public</span> <span class="type">List&lt;string&gt;</span> Skills => <span class="keyword">new</span>()
     {
-        <span class="keyword">public string</span> Name { <span class="keyword">get</span>; } = <span class="string">"Albi Idrizi"</span>;
-        <span class="keyword">public string</span> Role { <span class="keyword">get</span>; } = <span class="string">".NET Full-Stack Developer"</span>;
-        <span class="keyword">public List&lt;string&gt;</span> Skills { <span class="keyword">get</span>; }
-
-        <span class="keyword">public</span> Developer()
-        {
-            Skills = <span class="keyword">new</span>() 
-            { 
-                <span class="string">".NET 6+"</span>, 
-                <span class="string">"C#"</span>, 
-                <span class="string">"SQL Server"</span>,
-                <span class="string">"Azure"</span>,
-                <span class="string">"REST API"</span>
-            };
-        }
-
-        <span class="keyword">public string</span> GetBio() 
-        {
-            <span class="keyword">return</span> <span class="string">"Specializing in building high-performance, scalable microservices and distributed systems."</span>;
-        }
-    }
+        <span class="string">".NET Core"</span>, <span class="string">"Flutter"</span>, <span class="string">"Python/Django"</span>,
+        <span class="string">"C#"</span>, <span class="string">"Dart"</span>, <span class="string">"SQL"</span>, <span class="string">"Azure"</span>
+    };
+    
+    <span class="keyword">public bool</span> IsAvailable => <span class="keyword">true</span>;
 }</code></pre>
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+            
             <div class="about-content">
-                <h2>About Me</h2>
-                <p>.NET Full-Stack Developer specializing in building high-performance, scalable microservices and distributed systems. Passionate about clean architecture and cloud-native solutions.</p>
-                <p>With a strong foundation in C# and the .NET ecosystem, I craft robust Full-Stack applications that deliver exceptional performance and maintainability.</p>
-                <div class="tech-stack">
-                    <span class="tech-badge">.NET 6+</span>
-                    <span class="tech-badge">C#</span>
-                    <span class="tech-badge">SQL Server</span>
-                    <span class="tech-badge">Azure</span>
-                    <span class="tech-badge">Rest API</span>
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Django</span>
-                    <span class="tech-badge">Golang</span>
+                <div class="about-text">
+                    <p class="lead">
+                        I'm a passionate Full-Stack Developer with expertise in building robust, scalable applications 
+                        using modern technologies and best practices.
+                    </p>
+                    <p>
+                        As the co-founder of <strong>Veltric Solutions</strong>, I lead development initiatives and architect 
+                        solutions that drive business growth. My experience spans from enterprise .NET applications to 
+                        cross-platform mobile apps with Flutter and web applications with Python/Django.
+                    </p>
+                    <p>
+                        I believe in writing clean, maintainable code and creating user experiences that make a difference. 
+                        Whether it's optimizing backend performance or crafting intuitive interfaces, I approach each 
+                        challenge with enthusiasm and attention to detail.
+                    </p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <h4>Co-Founder</h4>
+                                <p>Veltric Solutions</p>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Computer Science</h4>
+                                <p>Bachelor's Degree</p>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Albania</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <div class="image-decoration"></div>
+                        <img src="https://via.placeholder.com/400x500/1e293b/3b82f6?text=AI" alt="Albi Idrizi">
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects section with enhanced 3D cards -->
-        <section id="projects">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects">
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">My professional journey</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Co-Founder & Lead Developer</h3>
+                            <span class="timeline-company">Veltric Solutions</span>
+                            <span class="timeline-date">2022 - Present</span>
+                        </div>
+                        <p>
+                            Leading development teams and architecting scalable solutions for clients. 
+                            Specializing in .NET Core applications, Flutter mobile apps, and cloud infrastructure.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">.NET Core</span>
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Azure</span>
+                            <span class="tag">Team Leadership</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Full-Stack Developer</h3>
+                            <span class="timeline-company">Metanow.dev</span>
+                            <span class="timeline-date">2021 - 2022</span>
+                        </div>
+                        <p>
+                            Developed and maintained enterprise applications using Python/Django and Odoo. 
+                            Implemented custom modules, integrated third-party services, and optimized system performance.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">Odoo</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Developer</h3>
+                            <span class="timeline-company">Freelance</span>
+                            <span class="timeline-date">2020 - 2021</span>
+                        </div>
+                        <p>
+                            Built custom web applications and APIs for various clients. Focused on .NET development 
+                            and database design while expanding skills in mobile development with Flutter.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">.NET</span>
+                            <span class="tag">SQL Server</span>
+                            <span class="tag">REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Tools and technologies I work with</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-csharp-plain"></i>
+                            <span>C#</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-python-plain"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-dart-plain"></i>
+                            <span>Dart</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-javascript-plain"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-typescript-plain"></i>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-go-plain"></i>
+                            <span>Go</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-dot-net-plain"></i>
+                            <span>.NET Core</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-flutter-plain"></i>
+                            <span>Flutter</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-django-plain"></i>
+                            <span>Django</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-react-original"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-angularjs-plain"></i>
+                            <span>Angular</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cube"></i>
+                            <span>Odoo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-microsoftsqlserver-plain"></i>
+                            <span>SQL Server</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-postgresql-plain"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-mysql-plain"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-mongodb-plain"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-redis-plain"></i>
+                            <span>Redis</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQLite</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Tools & Cloud</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-azure-plain"></i>
+                            <span>Azure</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-docker-plain"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-git-plain"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-kubernetes-plain"></i>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-jenkins-line"></i>
+                            <span>CI/CD</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-linux-plain"></i>
+                            <span>Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-bars">
+                <h3>Proficiency Levels</h3>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>.NET Development</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" data-width="95"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Flutter Development</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" data-width="85"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Python/Django</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Database Design</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" data-width="90"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>Cloud Architecture</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-fill" data-width="75"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Some of my recent work</p>
+            </div>
+            
+            <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-code project-icon"></i>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/1e293b/3b82f6?text=Veltric+Solutions" alt="Veltric Solutions">
+                        <div class="project-overlay">
+                            <a href="https://veltric.net" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Veltric Solutions Website</h3>
+                        <p>
+                            Company website for Veltric Solutions showcasing our services, portfolio, and team. 
+                            Built with modern web technologies and optimized for performance.
+                        </p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/1e293b/3b82f6?text=Test+Platform" alt="Test Program Platform">
+                        <div class="project-overlay">
+                            <a href="https://github.com/aidrizi23/TestProgram" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
                         <h3>Test Program Platform</h3>
+                        <p>
+                            Comprehensive test-taking platform built with .NET 8, featuring user authentication, 
+                            test management, and real-time scoring with detailed analytics.
+                        </p>
+                        <div class="project-tech">
+                            <span>.NET 8</span>
+                            <span>C#</span>
+                            <span>SQL Server</span>
+                            <span>MVC</span>
+                        </div>
                     </div>
-                    <img src="/api/placeholder/300/200" alt="Test Program Platform" class="project-img">
-                    <p>Local test taking platform made with .NET 8. Using the MVC Pattern, Dependency Injection and also Identity Services.</p>
-                    <div class="code-block">
-                        <code>public async Task&lt;IActionResult&gt; Test()</code>
-                    </div>
-                    <div class="project-technologies">
-                        <span class="project-tech">.NET 8</span>
-                        <span class="project-tech">C#</span>
-                        <span class="project-tech">MVC</span>
-                    </div>
-                    <a href="https://github.com/a/TestProgram" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
                 </div>
-
+                
                 <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-shopping-cart project-icon"></i>
-                        <h3>Second Hand Ecommerce Store</h3>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/1e293b/3b82f6?text=Flutter+App" alt="Mobile Banking App">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-mobile-alt"></i>
+                            </a>
+                        </div>
                     </div>
-                    <img src="/api/placeholder/300/200" alt="Second Hand Ecommerce Store" class="project-img">
-                    <p>Open Source backend project for a fully functional basic ecommerce store for second hand products.</p>
-                    <div class="code-block">
-                        <code>public async Task&lt;IActionResult&gt; Buy()</code>
+                    <div class="project-content">
+                        <h3>Mobile Banking App</h3>
+                        <p>
+                            Cross-platform mobile banking application built with Flutter, featuring secure 
+                            transactions, account management, and real-time notifications.
+                        </p>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Firebase</span>
+                            <span>REST API</span>
+                        </div>
                     </div>
-                    <div class="project-technologies">
-                        <span class="project-tech">.NET</span>
-                        <span class="project-tech">EF Core</span>
-                        <span class="project-tech">API</span>
-                    </div>
-                    <a href="https://github.com/aidrizi23/Ecommerce2" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
                 </div>
-
+                
                 <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-home project-icon"></i>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/1e293b/3b82f6?text=E-commerce" alt="E-commerce Platform">
+                        <div class="project-overlay">
+                            <a href="https://github.com/aidrizi23/Ecommerce2" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Second Hand E-commerce</h3>
+                        <p>
+                            Full-featured e-commerce platform for second-hand products with advanced search, 
+                            user reviews, and secure payment integration.
+                        </p>
+                        <div class="project-tech">
+                            <span>.NET Core</span>
+                            <span>Entity Framework</span>
+                            <span>Stripe API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/1e293b/3b82f6?text=Real+Estate" alt="Nest Albania">
+                        <div class="project-overlay">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
                         <h3>Nest Albania</h3>
-                    </div>
-                    <img src="/api/placeholder/300/200" alt="Nest Albania" class="project-img">
-                    <p>Real Estate agency management web application with analytics tools implemented.</p>
-                    <div class="code-block">
-                        <code>public async Task&lt;IActionResult&gt; Rent()</code>
-                    </div>
-                    <div class="project-technologies">
-                        <span class="project-tech">.NET</span>
-                        <span class="project-tech">SQL</span>
-                        <span class="project-tech">Analytics</span>
+                        <p>
+                            Real estate management platform with property listings, virtual tours, 
+                            and integrated analytics for agencies and property owners.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Django</span>
+                            <span>PostgreSQL</span>
+                            <span>React</span>
+                        </div>
                     </div>
                 </div>
-
+                
                 <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-laptop-code project-icon"></i>
-                        <h3>Personal Portfolio Website</h3>
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/1e293b/3b82f6?text=Web+Scraper" alt="Property Scraper">
+                        <div class="project-overlay">
+                            <a href="https://github.com/aidrizi23/Century21_house_finder" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
                     </div>
-                    <img src="/api/placeholder/300/200" alt="Personal Portfolio Website" class="project-img">
-                    <p>Personal portfolio website (this one) made using only HTML, CSS, and pure JavaScript.</p>
-                    <div class="code-block">
-                        <code>public async Task&lt;IActionResult&gt; Hire()</code>
+                    <div class="project-content">
+                        <h3>Property Web Scraper</h3>
+                        <p>
+                            Automated web scraping tool for real estate data collection and analysis, 
+                            with data cleaning and export capabilities.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>BeautifulSoup</span>
+                            <span>Pandas</span>
+                            <span>Selenium</span>
+                        </div>
                     </div>
-                    <div class="project-technologies">
-                        <span class="project-tech">HTML</span>
-                        <span class="project-tech">CSS</span>
-                        <span class="project-tech">JavaScript</span>
-                    </div>
-                    <a href="https://github.com/aidrizi23/personal-portfolio-website" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-search project-icon"></i>
-                        <h3>Python Web Scraper</h3>
-                    </div>
-                    <img src="/api/placeholder/300/200" alt="Python Web Scraper" class="project-img">
-                    <p>Web Scraper for Albanian properties on Century21 Website.</p>
-                    <div class="code-block">
-                        <code>public async Task&lt;IActionResult&gt; Process()</code>
-                    </div>
-                    <div class="project-technologies">
-                        <span class="project-tech">Python</span>
-                        <span class="project-tech">BeautifulSoup</span>
-                        <span class="project-tech">Pandas</span>
-                    </div>
-                    <a href="https://github.com/aidrizi23/Century21_house_finder" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i> View on GitHub
-                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact section with enhanced 3D form -->
-        <section class="contact" id="contact">
-            <h2>Get in Touch</h2>
-            <div class="contact-container">
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's discuss your next project</p>
+            </div>
+            
+            <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p><a href="mailto:albiidrizi27@gmail.com"> albiidrizi27@gmail.com </a></p>
+                    <h3>Let's Connect</h3>
+                    <p>
+                        I'm always interested in hearing about new projects and opportunities. 
+                        Whether you have a question or just want to say hi, feel free to reach out!
+                    </p>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:albiidrizi27@gmail.com">albiidrizi27@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:+355123456789">+355 123 456 789</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <span>Tirana, Albania</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Albania</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <div>
-                            <h3>GitHub</h3>
-                            <p>github.com/aidrizi23</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p>linkedin.com/in/albiidrizi</p>
-                        </div>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/aidrizi23" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/albiidrizi" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/albiidrizi" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://veltric.net" target="_blank" aria-label="Veltric Solutions">
+                            <i class="fas fa-globe"></i>
+                        </a>
                     </div>
                 </div>
-                <form id="contact-form" class="contact-form" onsubmit="event.preventDefault(); sendEmail();">
-                    <div class="form-header">
-                        <h3>Send a Message</h3>
-                        <p>I'll get back to you as soon as possible</p>
-                    </div>
+                
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject</label>
                     </div>
-                    <button type="submit" class="submit-btn">
+                    
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-submit">
                         <span>Send Message</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <footer>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-symbol">&lt;/&gt;</span> Albi Idrizi
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">
+                        <span class="logo-text">AI</span>
+                        <span class="logo-dot">.</span>
+                    </a>
+                    <p>Full-Stack Developer & Co-Founder of Veltric Solutions</p>
                 </div>
-                <div class="footer-nav">
-                    <a href="#home">Home</a>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
                     <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
                     <a href="#contact">Contact</a>
                 </div>
-                <div class="social-links">
-                    <a href="https://github.com/aidrizi23" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/albiidrizi" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <a href="#">Web Development</a>
+                    <a href="#">Mobile Development</a>
+                    <a href="#">API Development</a>
+                    <a href="#">Cloud Solutions</a>
                 </div>
-                <p>&copy; 2025 .NET Full-Stack Developer | Albi Idrizi</p>
+                
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/aidrizi23" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/albiidrizi" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://veltric.net" target="_blank" aria-label="Veltric Solutions">
+                            <i class="fas fa-globe"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </footer>
-    </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Albi Idrizi. All rights reserved.</p>
+                <p>Co-Founder at <a href="https://veltric.net" target="_blank">Veltric Solutions</a></p>
+            </div>
+        </div>
+    </footer>
 
-    <!-- External scripts -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
-    <!-- Combined script for all functionality -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize EmailJS
-            (function() {
-                emailjs.init("hlf4vibdNVOLMu0OP");
-            })();
-            
-            // Email sending function
-            window.sendEmail = function() {
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value + "\n\n" + email;
-                
-                const params = {
-                    from_name: name,
-                    from_email: "albiidrizi27@gmail.com",
-                    message: message,
-                };
-                
-                // Show sending indicator
-                const submitBtn = document.querySelector('.submit-btn');
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                submitBtn.disabled = true;
-                
-                emailjs.send('service_6uv80hy', 'template_5pv3bpc', params)
-                    .then(function(response) {
-                        console.log('SUCCESS!', response);
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-                        setTimeout(() => {
-                            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-                            submitBtn.disabled = false;
-                        }, 2000);
-                        document.getElementById('contact-form').reset();
-                    }, function(error) {
-                        console.log('FAILED...', error);
-                        submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed!';
-                        setTimeout(() => {
-                            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-                            submitBtn.disabled = false;
-                        }, 2000);
-                    });
-            };
-            
-            // Typing effect for role title
-            const roles = [".NET Developer", "Backend Engineer", "Full-Stack Engineer", "C# Specialist", "API Designer"];
-            const typingTextElement = document.getElementById('typing-text');
-            let roleIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-            
-            function typeRole() {
-                const currentRole = roles[roleIndex];
-                
-                if (isDeleting) {
-                    typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    typingTextElement.textContent = currentRole.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 100;
-                }
-                
-                if (!isDeleting && charIndex === currentRole.length) {
-                    isDeleting = true;
-                    typingSpeed = 1500; // Pause at the end
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % roles.length;
-                    typingSpeed = 500; // Pause before typing new role
-                }
-                
-                setTimeout(typeRole, typingSpeed);
-            }
-            
-            // Start typing roles
-            setTimeout(typeRole, 1000);
-            
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            
-            mobileMenuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-            
-            // Close mobile menu when link is clicked
-            const navLinksArray = document.querySelectorAll('.nav-links a');
-            navLinksArray.forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                });
-            });
-            
-            // =============== Terminal Functionality ===============
-            const terminal = document.getElementById('terminalBody');
-            let commandHistory = [];
-            let historyIndex = -1;
-            
-            // Array of quotes by famous programmers and technologists
-            const quotes = [
-                "The only way to do great work is to love what you do. - Steve Jobs",
-                "Innovation distinguishes between a leader and a follower. - Steve Jobs",
-                "Stay hungry, stay foolish. - Steve Jobs",
-                "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
-                "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
-                "Good code is its own best documentation. - Steve McConnell",
-                "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler",
-                "First, solve the problem. Then, write the code. - John Johnson",
-                "Programming isn't about what you know; it's about what you can figure out. - Chris Pine",
-                "Clean code always looks like it was written by someone who cares. - Robert C. Martin"
-            ];
-
-            // Function to get a random quote
-            function getRandomQuote() {
-                return quotes[Math.floor(Math.random() * quotes.length)];
-            }
-
-            // Function to add a new line to the terminal
-            function addTerminalLine(content) {
-                const line = document.createElement('div');
-                line.className = 'terminal-line';
-                line.innerHTML = content;
-                terminal.appendChild(line);
-                
-                // Scroll to bottom of terminal
-                terminal.scrollTop = terminal.scrollHeight;
-                
-                return line;
-            }
-
-            // Function to add output to the terminal
-            function addOutput(output) {
-                if (!output) return;
-                
-                // Handle multi-line output
-                const lines = output.split('\n');
-                
-                lines.forEach(line => {
-                    addTerminalLine(`<span class="output-line">${line}</span>`);
-                });
-            }
-
-            // Function to create a new command line with input
-            function createCommandLine() {
-                const line = addTerminalLine(`<span class="terminal-prompt">albi@portfolio:~$</span> <span class="terminal-input-container"><input type="text" class="terminal-input" autocomplete="off" spellcheck="false"><span class="terminal-cursor"></span></span>`);
-                
-                const input = line.querySelector('.terminal-input');
-                input.focus();
-                
-                // Handle input events
-                input.addEventListener('keydown', handleInputKeydown);
-                
-                return input;
-            }
-
-            // Function to handle terminal input
-            function processCommand(input) {
-                // Add to command history if not empty
-                if (input && !commandHistory.includes(input)) {
-                    commandHistory.push(input);
-                    historyIndex = commandHistory.length;
-                }
-
-                // Parse command and arguments
-                const args = input.split(' ');
-                const command = args[0].toLowerCase();
-                
-                switch(command) {
-                    case 'help':
-                        return `Available commands:
-help - Show this help message
-clear - Clear the terminal
-about - Show information about me
-quote - Display a random programming quote
-whoami - Display who I am
-skills - List my technical skills
-projects - List my projects
-contact - Show contact information
-echo <text> - Display the provided text
-rev <text> - Reverse the provided text
-date - Show current date and time
-refresh - Reload the page
-github - Open my GitHub profile
-linkedin - Open my LinkedIn profile
-calc <expression> - Calculate a simple math expression`;
-                    
-                    case 'clear':
-                        terminal.innerHTML = '';
-                        return '';
-                    
-                    case 'about':
-                        return `I'm Albi Idrizi, a Full-Stack .NET developer specializing in building scalable solutions and robust APIs.
-I'm passionate about clean architecture, microservices, and cloud-native applications.
-Currently focusing on .NET 6+ development with C# and Azure.`;
-                    
-                    case 'quote':
-                        return getRandomQuote();
-                    
-                    case 'whoami':
-                        return 'Albi Idrizi - .NET Full-Stack Developer';
-                    
-                    case 'skills':
-                        return `.NET Core/6+, C#, ASP.NET, REST APIs
-SQL Server, Entity Framework, LINQ
-Azure, Docker, Microservices
-Python, Django, Go
-Git, CI/CD, Agile Methodologies`;
-                    
-                    case 'echo':
-                        return args.slice(1).join(' ');
-                    
-                    case 'rev':
-                        return reverseString(args.slice(1).join(' '));
-                    
-                    case 'date':
-                        return new Date().toLocaleString();
-                    
-                    case 'refresh':
-                        location.reload();
-                        return '';
-                    
-                    case 'github':
-                        window.open('https://github.com/aidrizi23', '_blank');
-                        return 'Opening GitHub profile...';
-                    
-                    case 'linkedin':
-                        window.open('https://linkedin.com/in/albi-idrizi', '_blank');
-                        return 'Opening LinkedIn profile...';
-                    
-                    case 'projects':
-                        return `My projects:
-1. Test Program Platform - Local test taking platform with .NET 8
-2. Second Hand Ecommerce Store - Backend for second hand products
-3. Nest Albania - Real Estate agency management application
-4. Personal Portfolio Website - This website
-5. Python Web Scraper - Web scraper for Century21 properties
-
-Type 'project <number>' for more details`;
-
-                    case 'project':
-                        const projectNum = parseInt(args[1]);
-                        if (isNaN(projectNum) || projectNum < 1 || projectNum > 5) {
-                            return 'Please provide a valid project number (1-5)';
-                        }
-                        
-                        const projects = [
-                            'Test Program Platform: Local test taking platform built with .NET 8, MVC pattern, Dependency Injection and Identity Services.',
-                            'Second Hand Ecommerce Store: Open source backend project for a functional ecommerce store for second hand products.',
-                            'Nest Albania: Real Estate agency management web application with integrated analytics tools.',
-                            'Personal Portfolio Website: This website built with HTML, CSS, and vanilla JavaScript.',
-                            'Python Web Scraper: Web scraper for Albanian properties on Century21 website.'
-                        ];
-                        
-                        return projects[projectNum - 1];
-                    
-                    case 'contact':
-                        return `Email: albiidrizi27@gmail.com
-GitHub: github.com/aidrizi23
-You can also use the contact form below to send me a message.`;
-                    
-                 
-                    case 'calc':
-                        if (!args[1]) return 'Please provide an expression. Example: calc 5+5';
-                        const expr = args.slice(1).join('');
-                        try {
-                            // Simple safe evaluation for basic math
-                            // Note: This is a simplified version 
-                            const sanitized = expr.replace(/[^0-9+\-*/.()]/g, '');
-                            const result = Function('"use strict";return (' + sanitized + ')')();
-                            return `${expr} = ${result}`;
-                        } catch (e) {
-                            return 'Invalid expression';
-                        }
-                        
-                    case '':
-                        return '';
-                        
-                    default:
-                        return `Command not found: ${command}. Type 'help' for available commands.`;
-                }
-            }
-
-            // Function to reverse characters in a string
-            function reverseString(str) {
-                return str.split('').reverse().join('');
-            }
-
-            // Function to handle input keydown events
-            function handleInputKeydown(e) {
-                const input = e.target;
-                
-                if (e.key === 'Enter') {
-                    // Get the input value
-                    const command = input.value.trim();
-                    
-                    // Replace the input with a static text
-                    const line = input.parentElement.parentElement;
-                    line.innerHTML = `<span class="terminal-prompt">albi@portfolio:~$</span> <span class="terminal-text">${command}</span>`;
-                    
-                    // Process the command
-                    const output = processCommand(command);
-                    if (output) {
-                        addOutput(output);
-                    }
-                    
-                    // Create a new command line
-                    createCommandLine();
-                } 
-                // Command history navigation
-                else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    if (historyIndex > 0) {
-                        historyIndex--;
-                        input.value = commandHistory[historyIndex];
-                    }
-                } 
-                else if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    if (historyIndex < commandHistory.length - 1) {
-                        historyIndex++;
-                        input.value = commandHistory[historyIndex];
-                    } else {
-                        historyIndex = commandHistory.length;
-                        input.value = '';
-                    }
-                }
-                // Tab completion (simplified)
-                else if (e.key === 'Tab') {
-                    e.preventDefault();
-                    const commands = ['help', 'clear', 'about', 'quote', 'whoami', 'skills', 
-                                    'echo', 'rev', 'date', 'refresh', 'github', 'linkedin', 
-                                    'projects', 'project', 'contact', 'weather', 'calc'];
-                    const inputText = input.value.toLowerCase();
-                    
-                    for (const cmd of commands) {
-                        if (cmd.startsWith(inputText)) {
-                            input.value = cmd + ' ';
-                            break;
-                        }
-                    }
-                }
-            }
-
-            // Initialize terminal with welcome message
-            function initializeTerminal() {
-                addOutput("Welcome to Albi's portfolio terminal. Type 'help' for available commands.");
-                createCommandLine();
-            }
-
-            // Initialize terminal
-            initializeTerminal();
-            
-            // Animation on scroll with intersection observer
-            const observerOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            const animatedElements = document.querySelectorAll('.about, .project-card, .contact, .contact-info, .contact-form');
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
-            
-            // 3D effect on project cards with perspective
-            const cards = document.querySelectorAll('.project-card');
-            
-            cards.forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateX = (y - centerY) / 10;
-                    const rotateY = (centerX - x) / 10;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-                    
-                    // Add glow effect
-                    const glowX = (x / rect.width) * 100;
-                    const glowY = (y / rect.height) * 100;
-                    card.style.background = `
-                        radial-gradient(
-                            circle at ${glowX}% ${glowY}%, 
-                            var(--card-glow), 
-                            var(--card-bg) 70%
-                        )
-                    `;
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-                    card.style.background = 'var(--card-bg)';
-                    card.style.transition = 'transform 0.5s ease, background 0.5s ease';
-                });
-            });
-            
-            // Parallax effect for code window
-            const codeWindow = document.querySelector('.code-window');
-            
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                const aboutSection = document.querySelector('.about');
-                const aboutTop = aboutSection.offsetTop;
-                const aboutHeight = aboutSection.offsetHeight;
-                
-                if (scrollY > aboutTop - window.innerHeight && scrollY < aboutTop + aboutHeight) {
-                    const parallaxValue = (scrollY - (aboutTop - window.innerHeight)) * 0.05;
-                    codeWindow.style.transform = `translateY(-${parallaxValue}px) rotateY(-5deg)`;
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+                    

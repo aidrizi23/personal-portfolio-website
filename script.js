@@ -1,369 +1,442 @@
-// Terminal Emulator and Website Functionality
-document.addEventListener('DOMContentLoaded', () => {
-  // =============== Terminal Functionality ===============
-  const terminal = document.getElementById('terminalBody');
-  let commandHistory = [];
-  let historyIndex = -1;
-  
-  // Array of quotes by famous programmers and technologists
-  const quotes = [
-    "The only way to do great work is to love what you do. - Steve Jobs",
-    "Innovation distinguishes between a leader and a follower. - Steve Jobs",
-    "Stay hungry, stay foolish. - Steve Jobs",
-    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
-    "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
-    "Good code is its own best documentation. - Steve McConnell",
-    "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler",
-    "First, solve the problem. Then, write the code. - John Johnson",
-    "Programming isn't about what you know; it's about what you can figure out. - Chris Pine",
-    "Clean code always looks like it was written by someone who cares. - Robert C. Martin"
-  ];
+// ===== Initialize EmailJS =====
+(function() {
+    emailjs.init("hlf4vibdNVOLMu0OP");
+})();
 
-  // Welcome message when terminal loads
-  function initializeTerminal() {
-    addOutput("Welcome to Albi's portfolio terminal. Type 'help' for available commands.", false);
-    addNewLine();
-  }
+// ===== DOM Elements =====
+const navbar = document.getElementById('navbar');
+const navMenu = document.getElementById('navMenu');
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelectorAll('.nav-link');
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const contactForm = document.getElementById('contactForm');
+const typingText = document.getElementById('typingText');
 
-  // Function to get a random quote
-  function getRandomQuote() {
-    return quotes[Math.floor(Math.random() * quotes.length)];
-  }
-
-  // Function to add a new input line to the terminal
-  function addNewLine() {
-    const newLine = document.createElement('div');
-    newLine.className = 'terminal-line';
-    newLine.innerHTML = `
-      <span class="terminal-prompt">albi@portfolio:~$</span>
-      <input type="text" class="terminal-input" autocomplete="off" spellcheck="false">
-    `;
-    terminal.appendChild(newLine);
-    const input = newLine.querySelector('.terminal-input');
-    input.focus();
-    
-    // Scroll to bottom of terminal
-    terminal.scrollTop = terminal.scrollHeight;
-    
-    return input;
-  }
-
-  // Function to add output to the terminal
-  function addOutput(output, addNewInputLine = true) {
-    if (output) {
-      // Handle multi-line output
-      const lines = output.split('\n');
-      
-      lines.forEach(line => {
-        const newLine = document.createElement('div');
-        newLine.className = 'terminal-line output-line';
-        newLine.innerHTML = `<span class="terminal-output">${line}</span>`;
-        terminal.appendChild(newLine);
-      });
-    }
-    
-    if (addNewInputLine) {
-      addNewLine();
-    }
-    
-    // Scroll to bottom of terminal
-    terminal.scrollTop = terminal.scrollHeight;
-  }
-
-  // Function to handle terminal input
-  function processInput(input) {
-    // Add to command history if not empty
-    if (input && !commandHistory.includes(input)) {
-      commandHistory.push(input);
-      historyIndex = commandHistory.length;
-    }
-
-    // Parse command and arguments
-    const args = input.split(' ');
-    const command = args[0].toLowerCase();
-    
-    switch(command) {
-      case 'help':
-        return `Available commands:
-help - Show this help message
-clear - Clear the terminal
-about - Show information about me
-quote - Display a random programming quote
-whoami - Display who I am
-skills - List my technical skills
-projects - List my projects
-contact - Show contact information
-echo <text> - Display the provided text
-rev <text> - Reverse the provided text
-date - Show current date and time
-refresh - Reload the page
-github - Open my GitHub profile
-linkedin - Open my LinkedIn profile
-weather <city> - Show weather for a city (simulated)
-calc <expression> - Calculate a simple math expression`;
-      
-      case 'clear':
-        terminal.innerHTML = '';
-        return '';
-      
-      case 'about':
-        return `I'm Albi Idrizi, a backend .NET developer specializing in building scalable solutions and robust APIs.
-I'm passionate about clean architecture, microservices, and cloud-native applications.
-Currently focusing on .NET 6+ development with C# and Azure.`;
-      
-      case 'quote':
-        return getRandomQuote();
-      
-      case 'whoami':
-        return 'Albi Idrizi - .NET Backend Developer';
-      
-      case 'skills':
-        return `.NET Core/6+, C#, ASP.NET, REST APIs
-SQL Server, Entity Framework, LINQ
-Azure, Docker, Microservices
-Python, Django, Go
-Git, CI/CD, Agile Methodologies`;
-      
-      case 'echo':
-        return args.slice(1).join(' ');
-      
-      case 'rev':
-        return reverseString(args.slice(1).join(' '));
-      
-      case 'date':
-        return new Date().toLocaleString();
-      
-      case 'refresh':
-        location.reload();
-        return '';
-      
-      case 'github':
-        window.open('https://github.com/aidrizi23', '_blank');
-        return 'Opening GitHub profile...';
-      
-      case 'linkedin':
-        window.open('https://linkedin.com/in/albi-idrizi', '_blank');
-        return 'Opening LinkedIn profile...';
-      
-      case 'projects':
-        return `My projects:
-1. Test Program Platform - Local test taking platform with .NET 8
-2. Second Hand Ecommerce Store - Backend for second hand products
-3. Nest Albania - Real Estate agency management application
-4. Personal Portfolio Website - This website
-5. Python Web Scraper - Web scraper for Century21 properties
-
-Type 'project <number>' for more details`;
-
-      case 'project':
-        const projectNum = parseInt(args[1]);
-        if (isNaN(projectNum) || projectNum < 1 || projectNum > 5) {
-          return 'Please provide a valid project number (1-5)';
-        }
-        
-        const projects = [
-          'Test Program Platform: Local test taking platform built with .NET 8, MVC pattern, Dependency Injection and Identity Services.',
-          'Second Hand Ecommerce Store: Open source backend project for a functional ecommerce store for second hand products.',
-          'Nest Albania: Real Estate agency management web application with integrated analytics tools.',
-          'Personal Portfolio Website: This website built with HTML, CSS, and vanilla JavaScript.',
-          'Python Web Scraper: Web scraper for Albanian properties on Century21 website.'
-        ];
-        
-        return projects[projectNum - 1];
-      
-      case 'contact':
-        return `Email: albiidrizi27@gmail.com
-GitHub: github.com/aidrizi23
-You can also use the contact form below to send me a message.`;
-      
-      case 'weather':
-        if (!args[1]) return 'Please specify a city. Example: weather London';
-        const city = args.slice(1).join(' ');
-        const temps = [15, 18, 20, 22, 25, 17, 19, 21, 24, 16];
-        const temp = temps[Math.floor(Math.random() * temps.length)];
-        const conditions = ['Sunny', 'Cloudy', 'Partly Cloudy', 'Rainy', 'Clear'];
-        const condition = conditions[Math.floor(Math.random() * conditions.length)];
-        return `Weather in ${city}: ${temp}°C, ${condition}`;
-      
-      case 'calc':
-        if (!args[1]) return 'Please provide an expression. Example: calc 5+5';
-        const expr = args.slice(1).join('');
-        try {
-          // Simple safe evaluation for basic math
-          // Note: This is a simplified version and not secure for production
-          const sanitized = expr.replace(/[^0-9+\-*/.()]/g, '');
-          const result = Function('"use strict";return (' + sanitized + ')')();
-          return `${expr} = ${result}`;
-        } catch (e) {
-          return 'Invalid expression';
-        }
-        
-      case '':
-        return '';
-        
-      default:
-        return `Command not found: ${command}. Type 'help' for available commands.`;
-    }
-  }
-
-  // Function to reverse characters in a string
-  function reverseString(str) {
-    return str.split('').reverse().join('');
-  }
-
-  // Event delegation for terminal input
-  terminal.addEventListener('keydown', (e) => {
-    const inputElement = e.target;
-    
-    if (!inputElement.classList.contains('terminal-input')) return;
-    
-    if (e.key === 'Enter') {
-      const input = inputElement.value.trim();
-      inputElement.disabled = true; // Disable the current input line
-      
-      // Replace input with span to match styling
-      const inputLine = inputElement.parentElement;
-      inputLine.innerHTML = `
-        <span class="terminal-prompt">albi@portfolio:~$</span>
-        <span class="terminal-text">${input}</span>
-      `;
-      
-      const output = processInput(input);
-      addOutput(output);
-    } 
-    // Command history navigation
-    else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (historyIndex > 0) {
-        historyIndex--;
-        inputElement.value = commandHistory[historyIndex];
-      }
-    } 
-    else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (historyIndex < commandHistory.length - 1) {
-        historyIndex++;
-        inputElement.value = commandHistory[historyIndex];
-      } else {
-        historyIndex = commandHistory.length;
-        inputElement.value = '';
-      }
-    }
-    // Tab completion (simplified)
-    else if (e.key === 'Tab') {
-      e.preventDefault();
-      const commands = ['help', 'clear', 'about', 'quote', 'whoami', 'skills', 
-                        'echo', 'rev', 'date', 'refresh', 'github', 'linkedin', 
-                        'projects', 'project', 'contact', 'weather', 'calc'];
-      const input = inputElement.value.toLowerCase();
-      
-      for (const cmd of commands) {
-        if (cmd.startsWith(input)) {
-          inputElement.value = cmd + ' ';
-          break;
-        }
-      }
-    }
-  });
-
-  // Initialize terminal
-  initializeTerminal();
-
-  // =============== Mobile Menu ===============
-  // Create mobile menu button if it doesn't exist
-  if (!document.querySelector('.mobile-menu-btn')) {
-    const mobileMenuBtn = document.createElement('button');
-    mobileMenuBtn.className = 'mobile-menu-btn';
-    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    
-    const nav = document.querySelector('nav');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (nav && navLinks) {
-      nav.insertBefore(mobileMenuBtn, navLinks);
-      
-      mobileMenuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-          ? '<i class="fas fa-times"></i>' 
-          : '<i class="fas fa-bars"></i>';
-      });
-      
-      // Close mobile menu when clicking on a link
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        });
-      });
-    }
-  }
-
-  // =============== Smooth Scroll ===============
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-
-  // =============== Animation on Scroll ===============
-  // Simple animation for elements when they come into view
-  const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.project-card, .about, .contact');
-    
-    elements.forEach(element => {
-      const elementPosition = element.getBoundingClientRect().top;
-      const screenPosition = window.innerHeight;
-      
-      if (elementPosition < screenPosition) {
-        element.classList.add('animate');
-      }
-    });
-  }
-  
-  window.addEventListener('scroll', animateOnScroll);
-  animateOnScroll(); // Run once on load
-
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Create dark mode toggle button
-    const themeToggle = document.createElement('button');
-    themeToggle.className = 'theme-toggle';
-    themeToggle.innerHTML = `
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-    `;
-    document.body.appendChild(themeToggle);
-    
-    // Check for saved theme preference
+// ===== Theme Management =====
+const initTheme = () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+};
+
+const updateThemeIcon = (theme) => {
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+};
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      // Add rotation animation on click
-      themeToggle.style.animation = 'rotate 0.5s ease';
-      setTimeout(() => {
-        themeToggle.style.animation = '';
-      }, 500);
-    });
-  });
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
 });
+
+// ===== Navigation =====
+// Mobile menu toggle
+navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    navToggle.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+});
+
+// Close mobile menu on link click
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Active link on scroll
+const sections = document.querySelectorAll('section[id]');
+
+const updateActiveLink = () => {
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (navLink) navLink.classList.add('active');
+        }
+    });
+};
+
+// Navbar scroll effect
+const handleNavbarScroll = () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+};
+
+// ===== Typing Animation =====
+const roles = [
+    "Full-Stack Developer",
+    ".NET Specialist",
+    "Flutter Developer",
+    "Python/Django Expert",
+    "Co-Founder at Veltric"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100;
+
+const typeRole = () => {
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+        typingText.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+    } else {
+        typingText.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 100;
+    }
+    
+    if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        typingSpeed = 2000; // Pause at end
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typingSpeed = 500; // Pause before typing new role
+    }
+    
+    setTimeout(typeRole, typingSpeed);
+};
+
+// ===== Counter Animation =====
+const animateCounter = (element) => {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+    
+    updateCounter();
+};
+
+// ===== Skill Bars Animation =====
+const animateSkillBars = () => {
+    const skillBars = document.querySelectorAll('.skill-fill');
+    
+    skillBars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        bar.style.width = width + '%';
+    });
+};
+
+// ===== Scroll Animations =====
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Trigger specific animations
+            if (entry.target.classList.contains('stat-value')) {
+                animateCounter(entry.target);
+            }
+            
+            if (entry.target.classList.contains('skills-bars')) {
+                animateSkillBars();
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe elements
+document.querySelectorAll('.scroll-animate').forEach(el => {
+    scrollObserver.observe(el);
+});
+
+document.querySelectorAll('.stat-value').forEach(el => {
+    scrollObserver.observe(el);
+});
+
+document.querySelector('.skills-bars')?.addEventListener('animationend', animateSkillBars);
+
+// ===== Particles Background =====
+const createParticles = () => {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+            position: absolute;
+            width: ${Math.random() * 4 + 1}px;
+            height: ${Math.random() * 4 + 1}px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            opacity: ${Math.random() * 0.5 + 0.2};
+            animation: float ${Math.random() * 10 + 10}s linear infinite;
+        `;
+        particlesContainer.appendChild(particle);
+    }
+};
+
+// ===== Smooth Scroll =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// ===== Back to Top =====
+const toggleBackToTop = () => {
+    if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+};
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// ===== Contact Form =====
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = contactForm.querySelector('.btn-submit');
+    const originalContent = submitBtn.innerHTML;
+    
+    // Show loading state
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    
+    // Get form data
+    const formData = {
+        from_name: document.getElementById('name').value,
+        from_email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+    
+    try {
+        // Send email using EmailJS
+        await emailjs.send('service_6uv80hy', 'template_5pv3bpc', {
+            from_name: formData.from_name,
+            from_email: formData.from_email,
+            message: `Subject: ${formData.subject}\n\nFrom: ${formData.from_email}\n\n${formData.message}`
+        });
+        
+        // Show success
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            submitBtn.innerHTML = originalContent;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+        }, 3000);
+        
+    } catch (error) {
+        console.error('Failed to send email:', error);
+        
+        // Show error
+        submitBtn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
+        submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            submitBtn.innerHTML = originalContent;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+        }, 3000);
+    }
+});
+
+// ===== Parallax Effect =====
+const parallaxElements = document.querySelectorAll('.parallax');
+
+const handleParallax = () => {
+    const scrolled = window.pageYOffset;
+    
+    parallaxElements.forEach(element => {
+        const speed = element.dataset.speed || 0.5;
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+    });
+};
+
+// ===== Mouse Move Effects =====
+document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX / window.innerWidth;
+    const mouseY = e.clientY / window.innerHeight;
+    
+    // Move gradient background slightly
+    const gradientBg = document.querySelector('.gradient-bg');
+    if (gradientBg) {
+        gradientBg.style.transform = `translate(${-50 + mouseX * 10}%, ${-50 + mouseY * 10}%)`;
+    }
+});
+
+// ===== Project Card Tilt Effect =====
+const projectCards = document.querySelectorAll('.project-card');
+
+projectCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+});
+
+// ===== Loading Animation =====
+window.addEventListener('load', () => {
+    // Hide loader if it exists
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 500);
+    }
+    
+    // Start animations
+    setTimeout(() => {
+        document.querySelectorAll('.animate-fade-in').forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+            }, index * 100);
+        });
+        
+        document.querySelectorAll('.animate-slide-up').forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }, 100);
+});
+
+// ===== Event Listeners =====
+window.addEventListener('scroll', () => {
+    handleNavbarScroll();
+    updateActiveLink();
+    toggleBackToTop();
+    handleParallax();
+});
+
+window.addEventListener('resize', () => {
+    // Handle resize events
+    if (window.innerWidth > 768) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// ===== Initialize =====
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    createParticles();
+    typeRole();
+    updateActiveLink();
+    
+    // Add scroll-animate class to elements
+    const animateElements = [
+        '.about-content',
+        '.timeline-item',
+        '.skill-category',
+        '.project-card',
+        '.contact-info',
+        '.contact-form'
+    ];
+    
+    animateElements.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('scroll-animate');
+            scrollObserver.observe(el);
+        });
+    });
+    
+    // Observe skills bars section
+    const skillsBarsSection = document.querySelector('.skills-bars');
+    if (skillsBarsSection) {
+        scrollObserver.observe(skillsBarsSection);
+    }
+});
+
+// ===== Performance Optimization =====
+let ticking = false;
+
+function requestTick() {
+    if (!ticking) {
+        requestAnimationFrame(updateAnimations);
+        ticking = true;
+    }
+}
+
+function updateAnimations() {
+    // Update animations here
+    ticking = false;
+}
+
+// Debounce scroll events
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+    }
+    scrollTimeout = window.requestAnimationFrame(() => {
+        requestTick();
+    });
+}, { passive: true });
