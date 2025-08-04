@@ -337,33 +337,50 @@ You can also use the contact form below to send me a message.`;
   animateOnScroll(); // Run once on load
 
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Create dark mode toggle button
-    const themeToggle = document.createElement('button');
-    themeToggle.className = 'theme-toggle';
-    themeToggle.innerHTML = `
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-    `;
-    document.body.appendChild(themeToggle);
+  // =============== Enhanced Animations ===============
+  // Add entrance animations to elements
+  const addEntranceAnimation = (element, animationType = 'fadeInUp') => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'all 0.6s ease';
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      // Add rotation animation on click
-      themeToggle.style.animation = 'rotate 0.5s ease';
-      setTimeout(() => {
-        themeToggle.style.animation = '';
-      }, 500);
-    });
+    setTimeout(() => {
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0)';
+    }, 100);
+  };
+  
+  // Apply entrance animations
+  const elementsToAnimate = document.querySelectorAll('.home-content, .terminal-container, .about-content, .code-illustration');
+  elementsToAnimate.forEach((el, index) => {
+    setTimeout(() => addEntranceAnimation(el), index * 200);
   });
 });
+
+// =============== Utility Functions ===============
+// Debounce function for performance
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Throttle function for scroll events
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}

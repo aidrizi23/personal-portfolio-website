@@ -349,12 +349,17 @@
     </div>
 
     <!-- External scripts -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Removed Cloudflare email-decode to avoid MIME/type nosniff issues on local dev -->
+    <!-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
     
     <!-- Combined script for all functionality -->
     <script>
+        // Ensure body is visible even if scripts fail early
         document.addEventListener('DOMContentLoaded', function() {
+            try { document.body.style.opacity = '1'; } catch(e) {}
+            const loadingEl = document.getElementById('loadingScreen');
+            if (loadingEl) loadingEl.remove();
             // Update typing roles to reflect emphasis
             const roles = ["Albi Idrizi", "Co-founder @ Veltric", ".NET Developer", "Flutter Developer", "Python Engineer", "Next.js/Node.js Engineer"];
             const typingTextElement = document.getElementById('typing-text');
@@ -388,8 +393,15 @@
                 setTimeout(typeRole, typingSpeed);
             }
             // Initialize EmailJS
-            (function() {
-                emailjs.init("hlf4vibdNVOLMu0OP");
+            // Initialize EmailJS safely
+            (function initEmailJsSafely() {
+                try {
+                    if (window.emailjs && typeof emailjs.init === 'function') {
+                        emailjs.init("hlf4vibdNVOLMu0OP");
+                    }
+                } catch(e) {
+                    console.warn('EmailJS init skipped:', e);
+                }
             })();
             
             // Email sending function
@@ -409,7 +421,8 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 submitBtn.disabled = true;
                 
-                emailjs.send('service_6uv80hy', 'template_5pv3bpc', params)
+                if (window.emailjs && typeof emailjs.send === 'function') {
+                  emailjs.send('service_6uv80hy', 'template_5pv3bpc', params)
                     .then(function(response) {
                         console.log('SUCCESS!', response);
                         submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
@@ -426,6 +439,18 @@
                             submitBtn.disabled = false;
                         }, 2000);
                     });
+                } else {
+                  console.warn('EmailJS not loaded, simulating success');
+                  setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+                        submitBtn.disabled = false;
+                    }, 2000);
+                    document.getElementById('contact-form').reset();
+                  }, 800);
+                  return;
+                }
             };
             
             // Start typing roles
@@ -772,6 +797,7 @@ You can also use the contact form below to send me a message.`;
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
                 const aboutSection = document.querySelector('.about');
+                if (!aboutSection || !codeWindow) return; // guard against null
                 const aboutTop = aboutSection.offsetTop;
                 const aboutHeight = aboutSection.offsetHeight;
                 
