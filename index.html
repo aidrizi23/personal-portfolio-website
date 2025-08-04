@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Albi Idrizi - .NET Developer Portfolio</title>
-    <meta name="description" content="Professional portfolio of Albi Idrizi, a .NET FullStack Developer specializing in building high-performance, scalable microservices and distributed systems.">
-    <meta name="keywords" content="Albi Idrizi, .NET developer, C#, FullStack developer, microservices, portfolio, software engineer">
+    <title>Albi Idrizi - Co-founder @ Veltric Solutions | .NET, Flutter, Python</title>
+    <meta name="description" content="Portfolio of Albi Idrizi — Co-founder of Veltric Solutions (veltric.net). Specialized in .NET, Flutter and Python with experience in Python, Node.js, and Next.js. Building high-performance, scalable systems and robust APIs.">
+    <meta name="keywords" content="Albi Idrizi, Veltric Solutions, veltric.net, Co-founder, .NET developer, C#, Flutter, Python, Node.js, Next.js, Full-Stack developer, microservices, portfolio, software engineer">
     <meta name="author" content="Albi Idrizi">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Preload the Inter font for better performance -->
@@ -41,18 +41,25 @@
         <section class="home" id="home">
             <div class="home-content">
                 <div class="typing-container">
-                    <span class="pre-text">I'm a</span>
+                    <span class="pre-text">I'm</span>
                     <span class="typing" id="typing-text"></span>
                 </div>
-                <h1>.NET Developer</h1>
-                <p>Building Scalable Solutions & Robust APIs</p>
+                <h1 class="text-gradient">Co‑founder @ Veltric Solutions</h1>
+                <p>Building scalable products with .NET, Flutter, and Python. Experienced with Python, Node.js, and Next.js.</p>
                 <div class="cta-buttons">
-                    <a href="#contact" class="primary-btn">
-                        <i class="fas fa-envelope"></i> Get in Touch
+                    <a href="https://www.veltric.net" target="_blank" rel="noopener noreferrer" class="primary-btn">
+                        <i class="fas fa-building"></i> Visit Veltric
                     </a>
                     <a href="/Resume_Albi_Idrizi_9.pdf" download class="secondary-btn">
                         <i class="fas fa-download"></i> Download CV
                     </a>
+                </div>
+                <div class="highlights">
+                    <span class="pill">.NET</span>
+                    <span class="pill">Flutter</span>
+                    <span class="pill">Python</span>
+                    <span class="pill">Node.js</span>
+                    <span class="pill">Next.js</span>
                 </div>
                 <div class="stats">
                     <div class="stat-item">
@@ -111,7 +118,7 @@
     {
         <span class="keyword">public string</span> Name { <span class="keyword">get</span>; } = <span class="string">"Albi Idrizi"</span>;
         <span class="keyword">public string</span> Role { <span class="keyword">get</span>; } = <span class="string">".NET Full-Stack Developer"</span>;
-        <span class="keyword">public List&lt;string&gt;</span> Skills { <span class="keyword">get</span>; }
+        <span class="keyword">public List<string></span> Skills { <span class="keyword">get</span>; }
 
         <span class="keyword">public</span> Developer()
         {
@@ -136,17 +143,20 @@
             </div>
             <div class="about-content">
                 <h2>About Me</h2>
-                <p>.NET Full-Stack Developer specializing in building high-performance, scalable microservices and distributed systems. Passionate about clean architecture and cloud-native solutions.</p>
-                <p>With a strong foundation in C# and the .NET ecosystem, I craft robust Full-Stack applications that deliver exceptional performance and maintainability.</p>
+                <p>Co‑founder of Veltric Solutions (veltric.net). I’m a .NET specialist with strong experience in Flutter and Python. I also work with Node.js and Next.js for modern web applications.</p>
                 <div class="tech-stack">
                     <span class="tech-badge">.NET 6+</span>
                     <span class="tech-badge">C#</span>
+                    <span class="tech-badge">ASP.NET</span>
                     <span class="tech-badge">SQL Server</span>
                     <span class="tech-badge">Azure</span>
-                    <span class="tech-badge">Rest API</span>
+                    <span class="tech-badge">REST APIs</span>
+                    <span class="tech-badge">Flutter</span>
+                    <span class="tech-badge">Dart</span>
                     <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Django</span>
-                    <span class="tech-badge">Golang</span>
+                    <span class="tech-badge">FastAPI/Django</span>
+                    <span class="tech-badge">Node.js</span>
+                    <span class="tech-badge">Next.js</span>
                 </div>
             </div>
         </section>
@@ -154,6 +164,7 @@
         <!-- Projects section with enhanced 3D cards -->
         <section id="projects">
             <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">A selection of work across .NET, Python, Node.js and modern web.</p>
             <div class="projects">
                 <div class="project-card">
                     <div class="project-header">
@@ -344,6 +355,38 @@
     <!-- Combined script for all functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Update typing roles to reflect emphasis
+            const roles = ["Albi Idrizi", "Co-founder @ Veltric", ".NET Developer", "Flutter Developer", "Python Engineer", "Next.js/Node.js Engineer"];
+            const typingTextElement = document.getElementById('typing-text');
+            let roleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            
+            function typeRole() {
+                const currentRole = roles[roleIndex];
+                
+                if (isDeleting) {
+                    typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 40;
+                } else {
+                    typingTextElement.textContent = currentRole.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 80;
+                }
+                
+                if (!isDeleting && charIndex === currentRole.length) {
+                    isDeleting = true;
+                    typingSpeed = 1200;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    typingSpeed = 400;
+                }
+                
+                setTimeout(typeRole, typingSpeed);
+            }
             // Initialize EmailJS
             (function() {
                 emailjs.init("hlf4vibdNVOLMu0OP");
@@ -385,41 +428,8 @@
                     });
             };
             
-            // Typing effect for role title
-            const roles = [".NET Developer", "Backend Engineer", "Full-Stack Engineer", "C# Specialist", "API Designer"];
-            const typingTextElement = document.getElementById('typing-text');
-            let roleIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-            
-            function typeRole() {
-                const currentRole = roles[roleIndex];
-                
-                if (isDeleting) {
-                    typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    typingTextElement.textContent = currentRole.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 100;
-                }
-                
-                if (!isDeleting && charIndex === currentRole.length) {
-                    isDeleting = true;
-                    typingSpeed = 1500; // Pause at the end
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % roles.length;
-                    typingSpeed = 500; // Pause before typing new role
-                }
-                
-                setTimeout(typeRole, typingSpeed);
-            }
-            
             // Start typing roles
-            setTimeout(typeRole, 1000);
+            setTimeout(typeRole, 800);
             
             // Mobile menu toggle
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -538,21 +548,22 @@ calc <expression> - Calculate a simple math expression`;
                         return '';
                     
                     case 'about':
-                        return `I'm Albi Idrizi, a Full-Stack .NET developer specializing in building scalable solutions and robust APIs.
-I'm passionate about clean architecture, microservices, and cloud-native applications.
-Currently focusing on .NET 6+ development with C# and Azure.`;
+                        return `I'm Albi Idrizi — Co-founder of Veltric Solutions (veltric.net).
+I build scalable products with .NET, Flutter and Python, and have experience across Python, Node.js and Next.js.
+Passionate about clean architecture, microservices and cloud-native systems.`;
                     
                     case 'quote':
                         return getRandomQuote();
                     
                     case 'whoami':
-                        return 'Albi Idrizi - .NET Full-Stack Developer';
+                        return 'Albi Idrizi — Co-founder @ Veltric | .NET, Flutter, Python';
                     
                     case 'skills':
-                        return `.NET Core/6+, C#, ASP.NET, REST APIs
+                        return `.NET 6+, C#, ASP.NET, REST APIs
 SQL Server, Entity Framework, LINQ
 Azure, Docker, Microservices
-Python, Django, Go
+Flutter, Dart
+Python (FastAPI/Django), Node.js, Next.js
 Git, CI/CD, Agile Methodologies`;
                     
                     case 'echo':
