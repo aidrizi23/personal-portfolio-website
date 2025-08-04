@@ -1,9 +1,9 @@
-// ===== Initialize EmailJS =====
+/* ===== Initialize EmailJS ===== */
 (function() {
     emailjs.init("hlf4vibdNVOLMu0OP");
 })();
 
-// ===== DOM Elements =====
+/* ===== DOM Elements ===== */
 const navbar = document.getElementById('navbar');
 const navMenu = document.getElementById('navMenu');
 const navToggle = document.getElementById('navToggle');
@@ -12,6 +12,11 @@ const themeToggle = document.getElementById('themeToggle');
 const backToTop = document.getElementById('backToTop');
 const contactForm = document.getElementById('contactForm');
 const typingText = document.getElementById('typingText');
+
+/* Terminal DOM */
+const termBody = document.getElementById('terminalBody');
+const termInput = document.getElementById('terminalInput');
+const termPrompt = document.getElementById('terminalPrompt');
 
 // ===== Theme Management =====
 const initTheme = () => {
@@ -79,13 +84,14 @@ const handleNavbarScroll = () => {
     }
 };
 
-// ===== Typing Animation =====
+/* ===== Typing Animation ===== */
 const roles = [
     "Full-Stack Developer",
+    ".NET · Python · Node.js · Next.js · Flutter",
     ".NET Specialist",
     "Flutter Developer",
     "Python/Django Expert",
-    "Co-Founder at Veltric"
+    "Co-Founder at Veltric Solutions"
 ];
 
 let roleIndex = 0;
@@ -340,7 +346,247 @@ projectCards.forEach(card => {
     });
 });
 
-// ===== Loading Animation =====
+/* ===== Terminal Emulator (zsh-like) ===== */
+const Terminal = (() => {
+    const state = {
+        cwd: '~',
+        user: 'albi',
+        host: 'portfolio',
+        history: [],
+        historyIndex: -1,
+        files: {
+            '~': ['projects', 'resume.pdf', 'README.md', 'skills.txt'],
+            '~/projects': ['veltric-solutions', 'test-platform', 'mobile-banking-app', 'ecommerce-platform']
+        },
+        fileContents: {
+            'README.md': `Albi Idrizi — Full-Stack Developer & Co-Founder at Veltric Solutions
+Specialties: .NET, Python, Node.js, Next.js, Flutter, Azure, SQL Server, PostgreSQL, MongoDB
+Portfolio: https://github.com/aidrizi23  ·  Company: https://veltric.net`,
+            'skills.txt': `.NET · Python · Node.js · Next.js · Flutter`
+        }
+    };
+
+    const prompt = () => `${state.user}@${state.host}:${state.cwd}%`;
+
+    const print = (text = '', cls = '') => {
+        if (!termBody) return;
+        const out = document.createElement('div');
+        out.className = `terminal-output${cls ? ' ' + cls : ''}`;
+        out.textContent = text;
+        termBody.appendChild(out);
+        termBody.scrollTop = termBody.scrollHeight;
+    };
+
+    const printLines = (lines = [], cls = '') => {
+        lines.forEach(l => print(l, cls));
+    };
+
+    const setPrompt = () => {
+        if (termPrompt) termPrompt.textContent = prompt();
+    };
+
+    const pathJoin = (base, seg) => {
+        if (seg === '~' || seg === '') return '~';
+        if (seg.startsWith('~/')) return seg;
+        if (seg.startsWith('/')) return seg; // we keep virtual root simple
+        if (base === '~') return `~/${seg}`;
+        return `${base}/${seg}`;
+    };
+
+    const ls = (pathArg) => {
+        const path = pathArg ? resolvePath(pathArg) : state.cwd;
+        const list = state.files[path];
+        if (!list) {
+            print(`ls: cannot access '${pathArg || path}': No such file or directory`, 'error');
+            return;
+        }
+        print(list.join('  '));
+    };
+
+    const resolvePath = (p) => {
+        if (!p || p === '~') return '~';
+        if (p.startsWith('~/')) return p;
+        if (p === '..') {
+            if (state.cwd === '~') return '~';
+            const parts = state.cwd.split('/');
+            parts.pop();
+            return parts.join('/') || '~';
+        }
+        if (p === '.') return state.cwd;
+        return pathJoin(state.cwd, p);
+    };
+
+    const cd = (dir) => {
+        if (!dir || dir === '~') {
+            state.cwd = '~';
+            return;
+        }
+        const newPath = resolvePath(dir);
+        if (state.files[newPath]) {
+            state.cwd = newPath;
+        } else {
+            print(`cd: no such file or directory: ${dir}`, 'error');
+        }
+    };
+
+    const cat = (file) => {
+        if (!file) {
+            print('cat: missing file operand', 'error');
+            return;
+        }
+        const abs = file === 'README.md' || file === 'skills.txt'
+            ? file
+            : file.replace(/^~\//, '');
+
+        const content = state.fileContents[abs];
+        if (content) {
+            print(content);
+        } else {
+            print(`cat: ${file}: No such file`, 'error');
+        }
+    };
+
+    const manMap = {
+        help: 'help — list available commands',
+        clear: 'clear — clear the screen',
+        echo: 'echo — print arguments',
+        ls: 'ls [path] — list directory contents',
+        cd: 'cd [dir] — change directory',
+        pwd: 'pwd — print working directory',
+        whoami: 'whoami — print effective user',
+        uname: 'uname -a — print system information',
+        date: 'date — print or set the system date and time',
+        cat: 'cat [file] — print file contents',
+        curl: 'curl [url] — fetch a URL (mock)',
+        exit: 'exit — exit the terminal (mock)',
+        projects: 'projects — list highlighted projects',
+        skills: 'skills — show key skills'
+    };
+
+    const commands = {
+        help: () => {
+            print('Available commands:');
+            print(Object.keys(manMap).sort().join('  '), 'muted');
+        },
+        clear: () => {
+            if (!termBody) return;
+            termBody.innerHTML = '';
+        },
+        echo: (...args) => print(args.join(' ')),
+        pwd: () => print(state.cwd === '~' ? '/home/albi' : state.cwd.replace('~', '/home/albi')),
+        ls: (arg) => ls(arg),
+        cd: (arg) => cd(arg),
+        whoami: () => print('albi'),
+        uname: (...args) => {
+            if (args[0] === '-a') {
+                print('Linux portfolio 6.8.0 x86_64 GNU/Linux');
+            } else {
+                print('Linux');
+            }
+        },
+        date: () => print(new Date().toString()),
+        cat: (file) => cat(file),
+        curl: (url) => {
+            if (!url) return print('curl: try: curl https://veltric.net', 'error');
+            print(`Fetching ${url} ...`);
+            setTimeout(() => {
+                if (/veltric\.net/.test(url)) {
+                    print('200 OK');
+                    print('<html><title>Veltric Solutions</title><body>Visit https://veltric.net</body></html>', 'muted');
+                } else {
+                    print('Simulated response (network disabled in demo).', 'muted');
+                }
+            }, 400);
+        },
+        exit: () => print('Use the site navigation to continue.'),
+        man: (cmd) => {
+            if (!cmd) return print('What manual page do you want?', 'error');
+            const txt = manMap[cmd];
+            if (txt) print(txt);
+            else print(`No manual entry for ${cmd}`, 'error');
+        },
+        projects: () => {
+            printLines([
+                '- Veltric Solutions — https://veltric.net',
+                '- Test Program Platform — .NET 8, SQL Server',
+                '- Mobile Banking App — Flutter, Firebase',
+                '- Second Hand E-commerce — .NET Core, Stripe'
+            ]);
+        },
+        skills: () => {
+            print('.NET · Python · Node.js · Next.js · Flutter');
+        }
+    };
+
+    const run = (input) => {
+        if (!input) return;
+        state.history.push(input);
+        state.historyIndex = state.history.length;
+        const [cmd, ...args] = input.trim().split(/\s+/);
+        if (cmd in commands) {
+            commands[cmd](...args);
+        } else {
+            print(`${cmd}: command not found`, 'error');
+        }
+    };
+
+    const handleKey = (e) => {
+        if (!termInput) return;
+        // History navigation
+        if (e.key === 'ArrowUp') {
+            if (state.historyIndex > 0) {
+                state.historyIndex--;
+                termInput.value = state.history[state.historyIndex] || '';
+                e.preventDefault();
+            }
+        } else if (e.key === 'ArrowDown') {
+            if (state.historyIndex < state.history.length) {
+                state.historyIndex++;
+                termInput.value = state.history[state.historyIndex] || '';
+                e.preventDefault();
+            }
+        } else if (e.key === 'l' && e.ctrlKey) {
+            // Ctrl+L clear
+            e.preventDefault();
+            commands.clear();
+        } else if (e.key === 'Enter') {
+            const value = termInput.value;
+            // Print prompt + command
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            const promptEl = document.createElement('span');
+            promptEl.className = 'terminal-prompt';
+            promptEl.textContent = prompt();
+            const cmdEl = document.createElement('span');
+            cmdEl.className = 'terminal-output';
+            cmdEl.textContent = value;
+            line.appendChild(promptEl);
+            line.appendChild(cmdEl);
+            termBody.appendChild(line);
+            run(value);
+            termInput.value = '';
+            termBody.scrollTop = termBody.scrollHeight;
+        }
+    };
+
+    const focusInput = () => termInput && termInput.focus();
+
+    const boot = () => {
+        if (!termBody || !termInput || !termPrompt) return;
+        // Welcome message
+        print('Welcome to the portfolio terminal (zsh). Type "help" to get started.');
+        print('Highlight: .NET · Python · Node.js · Next.js · Flutter');
+        setPrompt();
+        termInput.addEventListener('keydown', handleKey);
+        // Focus on click anywhere inside terminal
+        termBody.parentElement?.addEventListener('click', focusInput);
+        focusInput();
+    };
+
+    return { boot, setPrompt };
+})();
+
+/* ===== Loading Animation ===== */
 window.addEventListener('load', () => {
     // Hide loader if it exists
     const loader = document.querySelector('.loader');
@@ -365,6 +611,9 @@ window.addEventListener('load', () => {
             }, index * 100);
         });
     }, 100);
+
+    // Boot terminal once page loaded
+    Terminal.boot();
 });
 
 // ===== Event Listeners =====
@@ -413,6 +662,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (skillsBarsSection) {
         scrollObserver.observe(skillsBarsSection);
     }
+
+    // Keep terminal prompt in sync on theme or other dynamic changes if needed
+    Terminal.setPrompt?.();
 });
 
 // ===== Performance Optimization =====

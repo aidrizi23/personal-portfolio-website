@@ -112,30 +112,19 @@
             </div>
             
             <div class="hero-visual">
-                <div class="code-window animate-float">
-                    <div class="window-header">
+                <div class="terminal animate-float" role="region" aria-label="Interactive terminal emulator">
+                    <div class="terminal-header">
                         <div class="window-controls">
                             <span class="control close"></span>
                             <span class="control minimize"></span>
                             <span class="control maximize"></span>
                         </div>
-                        <span class="window-title">Developer.cs</span>
+                        <span class="terminal-title">zsh — albi@portfolio:~</span>
                     </div>
-                    <div class="window-body">
-                        <pre><code><span class="keyword">public class</span> <span class="class">Developer</span>
-{
-    <span class="keyword">public string</span> Name => <span class="string">"Albi Idrizi"</span>;
-    <span class="keyword">public string</span> Role => <span class="string">"Full-Stack Developer"</span>;
-    <span class="keyword">public string</span> Company => <span class="string">"Veltric Solutions"</span>;
-    
-    <span class="keyword">public</span> <span class="type">List&lt;string&gt;</span> Skills => <span class="keyword">new</span>()
-    {
-        <span class="string">".NET Core"</span>, <span class="string">"Flutter"</span>, <span class="string">"Python/Django"</span>,
-        <span class="string">"C#"</span>, <span class="string">"Dart"</span>, <span class="string">"SQL"</span>, <span class="string">"Azure"</span>
-    };
-    
-    <span class="keyword">public bool</span> IsAvailable => <span class="keyword">true</span>;
-}</code></pre>
+                    <div class="terminal-body" id="terminalBody" aria-live="polite"></div>
+                    <div class="terminal-input-row">
+                        <span class="terminal-prompt" id="terminalPrompt">albi@portfolio:~%</span>
+                        <input id="terminalInput" class="terminal-input" type="text" spellcheck="false" aria-label="Terminal input" autocomplete="off" autofocus />
                     </div>
                 </div>
             </div>
@@ -763,4 +752,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-                    
